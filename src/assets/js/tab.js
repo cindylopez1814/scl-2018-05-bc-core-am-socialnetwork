@@ -24,7 +24,7 @@ firebase.database().ref('messages')
                 <p class="card-text">${newMessage.val().text}</p>
             </div>
             <div class="card-footer text-muted">
-            <i class="fab fa-earlybirds"></i><i class="fas fa-comment"></i><i class="fas fa-edit"></i><i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButton(event)"></i>
+            <i class="fab fa-earlybirds"togglestar-id="${newMessage.key}" onclick="toggleStar(event)"></i><i class="fas fa-comment"></i><i class="fas fa-edit"edit-id="${newMessage.key}" onclick="editButton(event)"></i><i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButton(event)"></i>
             </div>
         </div>
         ` + messageContainer.innerHTML;
@@ -52,4 +52,29 @@ function deleteButton(event) {
     cont.removeChild(cont.childNodes[0] && cont.childNodes[1]);
 }
     
+function editButton(event) {
 
+}
+
+var starCountRef = firebase.database().ref('posts/' + postId + '/starCount');
+starCountRef.on('value', function(snapshot) {
+  updateStarCount(postElement, snapshot.val());
+});
+
+function toggleStar(event) {
+    messagesRef.transaction(function(messages) {
+      if (messages) {
+        if (messages.stars && messages.stars[uid]) {
+          messages.starCount--;
+          messages.stars[uid] = null;
+        } else {
+          messages.starCount++;
+          if (!messages.stars) {
+            messages.stars = {};
+          }
+          messages.stars[uid] = true;
+        }
+      }
+      return messages;
+    });
+  }
