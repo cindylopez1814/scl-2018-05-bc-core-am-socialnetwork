@@ -24,7 +24,7 @@ firebase.database().ref('messages')
                 <p class="card-text">${newMessage.val().text}</p>
             </div>
             <div class="card-footer text-muted">
-            <i class="fab fa-earlybirds"></i><i class="fas fa-comment"></i><i class="fas fa-edit"></i><i class="fas fa-trash"></i>
+            <i class="fab fa-earlybirds"></i><i class="fas fa-comment"></i><i class="fas fa-edit"></i><i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButton(event)"></i>
             </div>
         </div>
         ` + messageContainer.innerHTML;
@@ -44,6 +44,12 @@ function sendMessage(){
         });
     }
 
-
+function deleteButton(event) {
+    event.stopPropagation();
+    const messagesId = event.target.getAttribute('data-id');
+    const messagesRef = firebase.database().ref('messages').child(messagesId);
+    messagesRef.remove();
+    cont.removeChild(cont.childNodes[0] && cont.childNodes[1]);
+}
     
 
