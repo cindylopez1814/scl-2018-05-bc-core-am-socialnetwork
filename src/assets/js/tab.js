@@ -1,4 +1,28 @@
 //mensajes
+/*const newPost = {
+    creationTime: firebase.database.ServerValue.TIMESTAMP,
+    creator: window.user.uid,
+    message: messageTextArea.value,
+    creatorAvatar: window.user.photoURL,
+    creatorName: user.displayName
+};*/
+
+const createUser = (user) => {
+    // debugger
+    const database = firebase.database();
+
+    const newUser = {
+        id: user.uid,
+        name: user.displayName,
+        email: user.emailVerified,
+        avatar: user.photoURL,
+    };
+
+    const newUserKey = user.uid;
+    database.ref(`/users/${newUserKey}`).update(newUser);
+}
+
+
 firebase.database().ref('messages')
         .limitToLast(5) // Filtro para no obtener todos los mensajes
         .once('value')
@@ -9,7 +33,7 @@ firebase.database().ref('messages')
 
         });
 
-//Acá comenzamos a escuchar por 
+//Acá comenzamos a escuchar por ${newMessage.creatorAvatar} va en img src
 //on child_added
 firebase.database().ref('messages')
     .limitToLast(5)
@@ -18,13 +42,13 @@ firebase.database().ref('messages')
         <div class="card">
             <div class="card-body">
                 <div class="col-1 avatar">
-                    <img class="img-fluid img-rounded" src=${newMessage.creatorAvatar}/>
+                    <img class="img-fluid img-rounded" src>
                 </div>
                 <h6 class="card-title">Nombre : ${newMessage.val().creatorName}</h6>
                 <p class="card-text">${newMessage.val().text}</p>
             </div>
             <div class="card-footer text-muted">
-            <i class="fab fa-earlybirds"togglestar-id="${newMessage.key}" onclick="toggleStar(event)"></i><i class="fas fa-comment"></i><i class="fas fa-edit"edit-id="${newMessage.key}" onclick="editButton(event)"></i><i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButton(event)"></i>
+            <i class="fab fa-earlybirds"onclick="toggleStar()"></i><i class="fas fa-comment"></i><i class="fas fa-edit"edit-id="${newMessage.key}" onclick="editButton(event)"></i><i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButton(event)"></i>
             </div>
         </div>
         ` + messageContainer.innerHTML;
