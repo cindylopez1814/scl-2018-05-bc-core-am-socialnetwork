@@ -8,7 +8,7 @@
 };*/
 
 const createUser = (user) => {
-    // debugger
+    
     const database = firebase.database();
 
     const newUser = {
