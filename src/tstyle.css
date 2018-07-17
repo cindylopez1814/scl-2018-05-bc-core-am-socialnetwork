@@ -62,6 +62,15 @@ i:hover{
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
+/*avatar falso*/
+.avatar{
+  display: inline-block;
+  max-height: 6em;
+  margin: auto;
+  background-image: url(assets/img/facebook-blank-face-blank-300x225-300x225-1.jpeg);
+  background-position: center;
+  background-size: cover;
+}
 
 /*PROBANDO lo de chatpost*/
 #comment {
