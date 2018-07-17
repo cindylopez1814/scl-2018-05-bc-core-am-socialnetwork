@@ -1,5 +1,4 @@
 // Cambiar foto de perfil
-
 updatePic.addEventListener('change', function(event) {
   let storageRef = firebase.storage().ref().child(firebase.auth().currentUser.Nb.email + '/profilePic.jpeg');
   let firstFile = event.target.files[0]; // upload the first file only
@@ -52,3 +51,4 @@ saveBtn.addEventListener('click', () => {
     saveBtn.classList.add('d-none');
   });
 });
+

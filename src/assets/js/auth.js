@@ -6,15 +6,7 @@ window.onload = () => {
       wall.classList.remove('d-none');
       loggedIn.classList.remove('d-none');
       console.log('User > ' + JSON.stringify(user));
-      if (firebase.database().ref(`users/${user.uid}`)) {
-        showInfo(user);  
-      } else {
-        firebase.database().ref(`users/${user.uid}`).set({
-          mail: user.email,
-          role: 'student'
-        });
-        showInfo(user);
-      }
+      showInfo(user);
     } else {
       // No estamos logueados esconder 'Cerrar Sesión'
       loggedIn.classList.add('d-none');
