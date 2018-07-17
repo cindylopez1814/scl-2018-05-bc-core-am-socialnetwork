@@ -74,7 +74,7 @@ function deleteButton(event) {
   const messagesId = event.target.getAttribute('data-id');
   const messagesRef = firebase.database().ref('messages').child(messagesId);
   messagesRef.remove();
-  cont.removeChild(cont.childNodes[0] && cont.childNodes[1]);
+  messageContainer.removeChild(messageContainer.childNodes[0] && messageContainer.childNodes[1]);
 }
   
 function editButton(event) {
