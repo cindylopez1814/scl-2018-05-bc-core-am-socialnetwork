@@ -503,6 +503,7 @@ img {
   display: inline-block;
   line-height: 48px;
 }
+
 /* Media queries */
 
 @media (min-width: 768px) {
