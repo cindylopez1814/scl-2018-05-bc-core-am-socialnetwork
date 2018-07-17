@@ -24,7 +24,7 @@ const createUser = (user) => {
 
 
 firebase.database().ref('messages')
-  .limitToLast(20) // Filtro para no obtener todos los mensajes
+  .limitToLast(5) // Filtro para no obtener todos los mensajes
   .once('value')
   .then((messages) => {
     console.log('Mensajes > ' + JSON.stringify(messages));
@@ -57,6 +57,7 @@ firebase.database().ref('messages')
 function sendMessage() {
   const currentUser = firebase.auth().currentUser;
   const messageAreaText = messageArea.value;
+}
 
 function deleteButton(event) {
     event.stopPropagation();
@@ -91,4 +92,4 @@ function toggleStar(event) {
       }
       return messages;
     });
-  
+}
