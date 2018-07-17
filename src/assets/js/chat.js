@@ -1,12 +1,10 @@
-
-  firebase.database().ref('chat')
+firebase.database().ref('chat')
   .limitToLast(20)
   .once('value')
-  .then((messages)=>{
-    console.log("mensajes" +JSON.stringidy(messages));
-})
-.catch(()=>{
-});
+  .then((messages) => {
+    console.log('mensajes' + JSON.stringidy(messages));
+  })
+  .catch(() => {});
 
 firebase.database().ref('chat')
   .limitToLast(20)
@@ -21,16 +19,13 @@ firebase.database().ref('chat')
   });
 
 function sendMessage() {
-  const currentUser = firebase.auth().currentUser; 
+  const currentUser = firebase.auth().currentUser;
   const messageAreaText = messageInput.value;
   const newMessageKey = firebase.database().ref().child('chat').push().key;
 
   firebase.database().ref(`chat/${newMessageKey}`).set({
-    creator : currentUser.uid,
-    creatorName : currentUser.displayName,
-    text : messageAreaText,
-    time : Date.now()
+    creator: currentUser.uid,
+    creatorName: currentUser.displayName,
+    text: messageAreaText
   });
-  messageInput.value = "";
 };
-
