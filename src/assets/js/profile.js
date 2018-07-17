@@ -1,27 +1,4 @@
-/* 
 // Cambiar foto de perfil
-$(document).ready(function() {
-  var readURL = function(input) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function(event) {
-        $('.profile-pic').attr('src', event.target.result);
-      };
-      reader.readAsDataURL(input.files[0]);
-    }
-  };
-
-  $('.file-upload').on('change', function() {
-    readURL(this);
-  });
-
-  $('.upload-button').on('click', function() {
-    $('.file-upload').click();
-  });
-});
-*/
-// Cambiar foto de perfil
-
 updatePic.addEventListener('change', function(event) {
   let storageRef = firebase.storage().ref().child(firebase.auth().currentUser.Nb.email + '/profilePic.jpeg');
   let firstFile = event.target.files[0]; // upload the first file only
@@ -36,6 +13,9 @@ function updatePhoto() {
       photoURL: url
     }).then(function() {
       console.log('Cambios guardados');
+      firebase.database().ref(`users/${firebase.auth().currentUser.uid}`).update({
+        profilePicture: firebase.auth().currentUser.photoURL
+      });
       profilePic.src = url;
       saveChanges.classList.add('d-none');
       updatePic.classList.add('d-none');
@@ -46,15 +26,29 @@ function updatePhoto() {
 };
 
 // Mostrar información del usuario
-function showInfo() {
-  if (firebase.auth().currentUser.displayName !== 'null') {
-    userName.value = firebase.auth().currentUser.displayName;
-    userEmail.value = firebase.auth().currentUser.email;
-    profilePic.src = firebase.auth().currentUser.photoURL;
+function showInfo(user) {
+  if (user.displayName !== null) {
+    userName.value = user.displayName;
+    userEmail.value = user.email;
+    profilePic.src = user.photoURL;
   } else {
-    userName.value = 'Indefinido';
-    userEmail.value = firebase.auth().currentUser.email;
-    profilePic.src = firebase.auth().currentUser.photoURL;
-  }
-};
+    userEmail.value = 'Indefinido';
+    userEmail.value = user.email;
+    profilePic.src = user.photoURL;
+  };
+}
+
+// Cambiar nombre de usuario
+saveBtn.addEventListener('click', () => {
+  firebase.database().ref(`users/${firebase.auth().currentUser.uid}`).update({
+    name: userName.value
+  });
+  firebase.auth().currentUser.updateProfile({
+    displayName: userName.value
+  }).then(function() {
+    console.log('Cambios guardados');
+    $('#userName').attr('readonly', true);
+    saveBtn.classList.add('d-none');
+  });
+});
 

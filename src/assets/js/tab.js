@@ -53,6 +53,7 @@ firebase.database().ref('messages')
       </div>
       ` + messageContainer.innerHTML;
 });
+
 // Usaremos una colección para guardar los mensajes, llamada messages
 function sendPost() {
   const currentUser = firebase.auth().currentUser;
