@@ -64,6 +64,7 @@ function sendPost() {
     creatorName: currentUser.displayName,
     text: messageAreaText
   });
+  messageArea.value = '';
 }
 
 function deleteButton(event) {
@@ -75,7 +76,6 @@ function deleteButton(event) {
 }
 
 function editButton(event) {
-
 }
 
 function toggleStar(event) {
