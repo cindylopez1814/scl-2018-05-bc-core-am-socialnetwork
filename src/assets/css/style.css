@@ -541,37 +541,33 @@ p {
   background-color: #f8f8f8;
   overflow: hidden;
 }
-
 .top_menu {
   padding: 2%;
   background-color: white;
 }
-
-.avatar-pic {
+.avatar-pic{
   float: left;
   margin-right: 2%;
-  width: 50px;
+  width:50px;
   height: 50px;
   border-radius: 100%;
   -webkit-border-radius: 100%;
   -moz-border-radius: 100%;
   -ms-border-radius: 100%;
-  background-color: #8d8c8c;
+  background-color: #5590A6;
+  background-image: url("../img/logo.png");
 }
-
-.chat-name {
+.chat-name{
   font-weight: bold;
   font-size: 16px;
 }
-
 .messagesContainer {
   list-style: none;
   padding: 20px 10px 0 10px;
   margin: 0;
-  height: 347px;
+  height: 70vh;
   overflow: scroll;
 }
-
 .message-data {
   margin-bottom: 15px;
 }
@@ -581,30 +577,29 @@ p {
   padding-left: 6px;
 }
 
-.message {
+.message {      
   color: white;
   margin-left: 2%;
-  padding: 18px;
+  padding: 18px ;
   line-height: 26px;
   font-size: 16px;
   border-radius: 18px;
   margin-bottom: 30px;
   width: 90%;
   position: relative;
-}
-
+}  
 .message:after {
-  bottom: 98%;
-  left: 10%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-  border-bottom-color: #84b0bd;
-  border-width: 10px;
-  margin-left: -10px;
+    bottom: 98%;
+    left: 10%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: #84b0bd;
+    border-width: 10px;
+    margin-left: -10px;
 }
 
 .my-message {
@@ -615,23 +610,21 @@ p {
   position: relative;
   width: 100%;
   background-color: #fff;
-  padding: 2%;
+  padding: 1%;
   position: absolute;
   bottom: 0;
 }
-
 .bottom_wrapper .message_input_wrapper {
   display: inline-block;
   height: 50px;
   border-radius: 25px;
-  border: 2px solid #82CCD5;
+  border: 2px solid #82CCD5 ;
   width: 75%;
   position: relative;
   padding: 0 20px;
   overflow: hidden;
-  resize: none;
+  resize:none;
 }
-
 .bottom_wrapper .message_input_wrapper .message-input {
   border: none;
   height: 100%;
@@ -642,9 +635,9 @@ p {
   color: gray;
   resize: none;
 }
-
 .bottom_wrapper .send_message {
   margin-left: 1%;
+  width: 20% ;
   display: inline;
   border-radius: 50px;
   background-color: rgb(255, 255, 255);
@@ -653,19 +646,17 @@ p {
   cursor: pointer;
   transition: all 0.2s linear;
   text-align: center;
+  float: right;
 }
-
 .bottom_wrapper .send_message:hover {
   color: rgb(255, 255, 255);
   background-color: #82ccd5;
 }
-
 .bottom_wrapper .send_message .text {
   font-size: 15px;
   display: inline-block;
   line-height: 48px;
 }
-
 /* Media queries */
 
 @media (min-width: 768px) {
