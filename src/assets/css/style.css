@@ -134,6 +134,7 @@ body {
   background-color: #82ccd5;
   z-index: 2;
   position: fixed;
+  top: 0;
   box-shadow: 0px 2px 14px -3px rgba(105, 105, 105, 1);
 }
 

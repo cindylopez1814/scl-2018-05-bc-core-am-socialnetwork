@@ -19,5 +19,7 @@
     "nyc": "^11.7.1",
     "opener": "^1.4.3"
   },
-  "eslintIgnore" : ["test/fixtures.js"]
+  "eslintIgnore": [
+    "test/fixtures.js"
+  ]
 }
