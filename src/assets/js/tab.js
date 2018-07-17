@@ -67,6 +67,9 @@ function sendPost() {
     creatorName: currentUser.displayName,
     text: messageAreaText
   });
+<<<<<<< HEAD
+  messageArea.value = "";
+=======
 
 }
 
@@ -80,6 +83,7 @@ function deleteButton(event) {
   
 function editButton(event) {
 
+>>>>>>> upstream/master
 }
 
 
