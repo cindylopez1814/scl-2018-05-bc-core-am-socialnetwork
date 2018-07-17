@@ -69,7 +69,6 @@ function loginFacebook() {
   firebase.auth().signInWithPopup(provider)
     .then(() => {
       console.log('Login con facebook');
-      cameraIcon.classList.add('d-none');
     })
     .catch((error) => {
       console.log('Error de firebase > ' + error.code);
@@ -87,7 +86,6 @@ function loginGoogle() {
       const token = result.credential.accessToken;
       // The signed-in user info.
       const user = result.user;
-      cameraIcon.classList.add('d-none');
     }).catch((error) => {
       // Handle Errors here.
       console.log('Error de Firebase ' + error.code);

@@ -1,58 +1,55 @@
-//mensajes
-/*const newPost = {
-    creationTime: firebase.database.ServerValue.TIMESTAMP,
-    creator: window.user.uid,
-    message: messageTextArea.value,
-    creatorAvatar: window.user.photoURL,
-    creatorName: user.displayName
+// mensajes
+/* const newPost = {
+  creationTime: firebase.database.ServerValue.TIMESTAMP,
+  creator: window.user.uid,
+  message: messageTextArea.value,
+  creatorAvatar: window.user.photoURL,
+  creatorName: user.displayName
 };*/
 
 const createUser = (user) => {
-    
   const database = firebase.database();
-
   const newUser = {
-      id: user.uid,
-      name: user.displayName,
-      email: user.emailVerified,
-      avatar: user.photoURL,
+    id: user.uid,
+    name: user.displayName,
+    email: user.emailVerified,
+    avatar: user.photoURL,
   };
-
   const newUserKey = user.uid;
   database.ref(`/users/${newUserKey}`).update(newUser);
-}
+};
 
 
 firebase.database().ref('messages')
-.limitToLast(5) // Filtro para no obtener todos los mensajes
-.once('value')
-.then((messages) => {
-  console.log('Mensajes > ' + JSON.stringify(messages));
-})
-.catch(() => {
+  .limitToLast(5) // Filtro para no obtener todos los mensajes
+  .once('value')
+  .then((messages) => {
+    console.log('Mensajes > ' + JSON.stringify(messages));
+  })
+  .catch(() => {
 
-});
+  });
 
-//Acá comenzamos a escuchar por ${newMessage.creatorAvatar} va en img src
-//on child_added
+// Acá comenzamos a escuchar por ${newMessage.creatorAvatar} va en img src
+// on child_added
 firebase.database().ref('messages')
-.limitToLast(5)
-.on('child_added', (newMessage) => {
-  messageContainer.innerHTML = `
+  .limitToLast(5)
+  .on('child_added', (newMessage) => {
+    messageContainer.innerHTML = `
       <div class="card w-75">
-          <div class="card-body">
-              <div class="col-1 avatar">
-                  <img class="img-fluid img-rounded" src>
-              </div>
-              <h6 class="card-title">Nombre : ${newMessage.val().creatorName}</h6>
-              <p class="card-text">${newMessage.val().text}</p>
+        <div class="card-body">
+          <div class="col-1 avatar">
+            <img class="img-fluid img-rounded" src>
           </div>
-          <div class="card-footer text-muted">
+          <h6 class="card-title">Nombre : ${newMessage.val().creatorName}</h6>
+          <p class="card-text">${newMessage.val().text}</p>
+        </div>
+        <div class="card-footer text-muted">
           <i class="fab fa-earlybirds"onclick="toggleStar()"></i><i class="fas fa-comment"></i><i class="fas fa-edit"edit-id="${newMessage.key}" onclick="editButton(event)"></i><i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButton(event)"></i>
-          </div>
+        </div>
       </div>
       ` + messageContainer.innerHTML;
-});
+  });
 
 // Usaremos una colección para guardar los mensajes, llamada messages
 function sendPost() {
@@ -67,7 +64,6 @@ function sendPost() {
     creatorName: currentUser.displayName,
     text: messageAreaText
   });
-
 }
 
 function deleteButton(event) {
@@ -77,11 +73,10 @@ function deleteButton(event) {
   messagesRef.remove();
   messageContainer.removeChild(messageContainer.childNodes[0] && messageContainer.childNodes[1]);
 }
-  
+
 function editButton(event) {
 
 }
-
 
 function toggleStar(event) {
   messagesRef.transaction(function(messages) {
