@@ -62,7 +62,7 @@ body {
 .boton-modal {
   padding: 0%;
   background-color: transparent;
-  color: #268eff;
+  color: #82CCD5;
   border: none;
 }
 
@@ -70,6 +70,7 @@ body {
   background-color: #3b5998;
   color: white;
   width: 90%;
+  font-size: 15px;
   margin-bottom: 2%;
   margin-left: 7%;
 }
@@ -82,6 +83,7 @@ body {
   background-color: #db3236;
   width: 90%;
   margin-left: 7%;
+  font-size: 15px;
   color: white;
 }
 
@@ -110,13 +112,14 @@ body {
 }
 
 .btn-register {
-  background-color: #666666;
-  color: white;
+  background-color: #82ccd5;
+  color: #333333;
   padding: 2%;
 }
 
 .btn-register:hover {
-  background-color: #616575;
+  background-color: rgb(176, 201, 204);
+  color: white;
 }
 
 /* Estilos de la barra de navegación */
@@ -149,7 +152,7 @@ body {
   position: absolute;
   height: inherit;
   background-color: white;
-  border: 1px solid #2b2b2b;
+  border: 1px solid #333333;
   border-radius: 0;
 }
 
@@ -192,7 +195,7 @@ body {
 }
 
 .animated-icon3 span {
-  background: #2b2b2b;
+  background: #333333;
 }
 
 .animated-icon3 span:nth-child(1) {
@@ -358,21 +361,21 @@ img {
 
 .form-btns .btn {
   border-radius: 25px;
-  background-color: inherit;
-  color: #82CCD5;
+  background-color: #82CCD5;
+  color: #333333;
   border: 2px solid #82CCD5;
 }
 
 .form-btns .btn:active {
   background-color: #82CCD5;
-  color: #FFFFFF;
+  color: white;
   border: 2px solid transparent;
 }
 
 .form-btns .btn:active:focus,
 .form-btns .btn:active:hover {
   background-color: #82CCD5;
-  color: #FFFFFF;
+  color: white;
   border: 2px solid transparent;
 }
 
@@ -531,11 +534,11 @@ p {
 .chat_window {
   position: absolute;
   width: 90%;
-  height: 85%;
+  height: 90%;
   border-radius: 10px;
   background-color: #fff;
   left: 50%;
-  top: 52%;
+  top: 53%;
   transform: translateX(-50%) translateY(-50%);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   background-color: #f8f8f8;
@@ -554,12 +557,12 @@ p {
   -webkit-border-radius: 100%;
   -moz-border-radius: 100%;
   -ms-border-radius: 100%;
-  background-color: #5590A6;
+  background-color: rgb(176, 201, 204);
   background-image: url("../img/logo.png");
 }
 .chat-name{
   font-weight: bold;
-  font-size: 16px;
+  font-size: 20px;
 }
 .messagesContainer {
   list-style: none;
@@ -569,12 +572,13 @@ p {
   overflow: scroll;
 }
 .message-data {
+  color: #333333;
   margin-bottom: 15px;
 }
 
 .message-data-time {
-  color: lighten(gray, 8%);
-  padding-left: 6px;
+  color: #333333;
+  font-size: 10px;
 }
 
 .message {      
@@ -597,26 +601,29 @@ p {
     width: 0;
     position: absolute;
     pointer-events: none;
-    border-bottom-color: #84b0bd;
+    border-bottom-color: rgb(176, 201, 204);
     border-width: 10px;
     margin-left: -10px;
 }
 
 .my-message {
-  background: #84b0bd;
+  background: rgb(176, 201, 204);
 }
 
 .bottom_wrapper {
   position: relative;
   width: 100%;
-  background-color: #fff;
+  height: 15vh;
+  background-color: white;
   padding: 1%;
   position: absolute;
   bottom: 0;
 }
 .bottom_wrapper .message_input_wrapper {
   display: inline-block;
-  height: 50px;
+  margin-top: 4%;
+  margin-left: 2%;
+  height: 10vh;
   border-radius: 25px;
   border: 2px solid #82CCD5 ;
   width: 75%;
@@ -629,15 +636,16 @@ p {
   border: none;
   height: 100%;
   box-sizing: border-box;
-  width: 75%;
+  width: 100%;
   position: absolute;
   outline-width: 0;
   color: gray;
   resize: none;
 }
 .bottom_wrapper .send_message {
-  margin-left: 1%;
-  width: 20% ;
+  margin-right: 2%;
+  margin-top: 6%;
+  width: 20%; 
   display: inline;
   border-radius: 50px;
   background-color: rgb(255, 255, 255);
@@ -715,12 +723,20 @@ p {
     width: 70%;
     left: 62%;
   }
+  .bottom_wrapper .message_input_wrapper {
+    width: 90%;
+    margin-top: 1%;
+  }
+  .bottom_wrapper .send_message {
+  width: 5%;
+  margin-top: 1.5%;
+  } 
   #loginFacebook {
-    margin: 1% 1% 1% 5%;
-    width: 45%;
+    margin: 1% 1% 1% 7%;
+    width: 44%;
   }
   #loginGoogle {
-    margin: 1% 1% 1% 1%;
-    width: 45%;
+    margin: 1% 0% 1% 0%;
+    width: 44%;
   }
 }

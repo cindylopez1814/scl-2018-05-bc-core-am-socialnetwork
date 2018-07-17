@@ -42,4 +42,5 @@ function sendPost() {
     creatorName: currentUser.displayName,
     text: messageAreaText
   });
+  messageArea.value = "";
 }
