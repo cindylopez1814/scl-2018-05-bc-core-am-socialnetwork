@@ -1,7 +1,7 @@
 // const trash = document.getElementsByClassName('fa-trash');
 
 firebase.database().ref('messages')
-  .limitToLast(5) // Filtro para no obtener todos los mensajes
+  .limitToLast(10) // Filtro para no obtener todos los mensajes
   .once('value')
   .then((messages) => {
     console.log('Mensajes > ' + JSON.stringify(messages));
@@ -24,7 +24,7 @@ firebase.database().ref('messages')
           <textarea class="card-text textArea" data-id="${newMessage.key}-txt" readonly>${newMessage.val().text}</textarea>
         </div>
         <div class="card-footer text-muted">
-          <i id="${newMessage.key}" class="fas fa-star" onclick="addStar(event)">
+          <i class="fas fa-star" data-id="${newMessage.key}" onclick="addStar(event)">
             <span>${newMessage.val().starsCount}</span>
           </i>
           <i class="fas fa-edit" data-id="${newMessage.key}" onclick="editButton(event)"></i>
@@ -46,16 +46,20 @@ firebase.database().ref('messages')
 function sendPost() {
   const currentUser = firebase.auth().currentUser;
   const messageAreaText = messageArea.value;
+  if (messageAreaText.length < 1) {
+    alert('Debes ingresar un mensaje');
+  } else {
   // Para tener una nueva llave en la colección messages
-  const newMessageKey = firebase.database().ref().child('messages').push().key;
-  firebase.database().ref(`messages/${newMessageKey}`).set({
-    creator: currentUser.uid,
-    creatorName: currentUser.displayName,
-    text: messageAreaText,
-    creatorAvatar: currentUser.photoURL,
-    starsCount: 0
-  });
-  messageArea.value = '';
+    const newMessageKey = firebase.database().ref().child('messages').push().key;
+    firebase.database().ref(`messages/${newMessageKey}`).set({
+      creator: currentUser.uid,
+      creatorName: currentUser.displayName,
+      text: messageAreaText,
+      creatorAvatar: currentUser.photoURL,
+      starsCount: 0
+    });
+    messageArea.value = '';
+  }
 }
 
 function deleteButton(event) {

@@ -48,6 +48,7 @@ saveBtn.addEventListener('click', () => {
   }).then(function() {
     console.log('Cambios guardados');
     $('#userName').attr('readonly', true);
+    userName.style.background = 'transparent';
     saveBtn.classList.add('d-none');
   });
 });

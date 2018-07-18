@@ -57,5 +57,7 @@ cam.addEventListener('click', () => {
 // Cambiar nombre de usuario
 diskBtn.addEventListener('click', () => {
   userName.removeAttribute('readonly');
+  userName.style.background = 'white';
   saveBtn.classList.remove('d-none');
 });
+
