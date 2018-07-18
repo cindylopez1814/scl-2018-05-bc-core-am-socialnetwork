@@ -160,7 +160,7 @@
       <div class="col-12">
         <!-- Caja de comentarios -->
         <div class="card">
-          <div id="publishPost" class="card-body">
+          <div class="card-body">
             <textarea id="messageArea" class="form-control" type="text" placeholder="Escribe tu mensaje"></textarea>
             <input id="sendButton" type="button" value="Publicar" onclick="sendPost()">
           </div>
@@ -198,10 +198,21 @@
       </div>
     </div>
   </div>
-
   <!-- Actividades -->
   <section id="activities" class="sections md-col-9 d-none">
-    <h1>Hola aquí van las actividades xD</h1>
+    <!-- Primera actividad -->
+    <div class="card">
+      <div class="card-header">
+        <h6 class="card-title">Viaje fin de año</h6>
+      </div>
+      <div class="card-body">
+        <div class="activityP">
+          <img src="assets/img/verano.png" alt="">
+        </div>
+        <p>Viaje de curso a Cartagena de Indias o Quintero.</p>
+        <p class="dateA">Fecha: 5-8 de Diciembre </p>
+      </div>
+    </div>  
   </section>
 
   <!-- Consejo de Curso -->
@@ -252,7 +263,7 @@
       <!-- Area de envio -->
       <div class="bottom_wrapper clearfix">
         <div class="message_input_wrapper">
-          <textarea class="message-input" id="messageInput"/></textarea>
+          <textarea class="message-input" id="messageInput" /> </textarea>
         </div>
         <div class="send_message" onclick="sendMessage(event)">
           <div class="text">

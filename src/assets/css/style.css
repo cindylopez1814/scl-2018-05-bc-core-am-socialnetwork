@@ -485,6 +485,20 @@ i:hover {
 .finalConsejo{
   margin-bottom: 10%;
 }
+
+/*ACTIVIDADES*/
+/*Fotos*/
+.activityP{
+  width: 30%;
+  vertical-align: center;
+}
+/*Fecha*/
+.dateA{
+  font-style: italic;
+  letter-spacing: 1px;
+  color: #5590A6;
+  font-weight: 500;
+}
 /*PROBANDO lo de chatpost*/
 
 #comment {
