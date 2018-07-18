@@ -491,6 +491,7 @@ i:hover {
 .activityP{
   width: 30%;
   vertical-align: center;
+  text-align: center;
 }
 /*Fecha*/
 .dateA{
