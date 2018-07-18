@@ -39,10 +39,12 @@ firebase.database().ref('messages')
       <div class="card w-75">
         <div class="card-body">
           <div class="col-1 avatar">
-            <img class="img-fluid img-rounded" src>
+            <img class="img-fluid img-rounded" src="${newMessage.creatorAvatar || "/assets/img/facebook-no-profile-picture-icon-620x389.jpg"}">
           </div>
-          <h6 class="card-title">Nombre : ${newMessage.val().creatorName}</h6>
-          <textarea id="messageTxt" class="card-text" readonly>${newMessage.val().text}</textarea>
+          <h6 class="card-title">${newMessage.val().creatorName}</h6>
+          <div class="text">
+          <p class="card-text">${newMessage.val().text}</p>
+          </div>
         </div>
         <div class="card-footer text-muted">
           <i class="fab fa-earlybirds" data-id="${newMessage.key}" onclick="addStar(event)"></i><p id="birdCounter"></p><i class="fas fa-edit" data-id="${newMessage.key}" onclick="editButton(event)"></i><i id="saveBtn" class="far fa-save d-none" data-id="${newMessage.key}" onclick="updateTxt()"></i><i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButton(event)"></i>
@@ -63,6 +65,7 @@ function sendPost() {
     creator: currentUser.uid,
     creatorName: currentUser.displayName,
     text: messageAreaText,
+    creatorAvatar: currentUser.photoURL
     starsCount: 0
   });
   messageArea.value = '';
