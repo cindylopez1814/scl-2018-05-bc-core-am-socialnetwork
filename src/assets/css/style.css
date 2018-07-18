@@ -294,6 +294,16 @@ body {
   padding-top: 7vh;
 }
 
+.profileContainer {
+  height: 88vh;
+  width: 90vw;
+  border-radius: 25px;
+  background-color: #fafafaa8;
+  position: absolute;
+  top: 9vh;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .profile-pic {
   max-width: 200px;
   max-height: 200px;
@@ -323,7 +333,6 @@ img {
 #cameraIcon {
   padding: 10px;
   position: absolute;
-  top: 220px;
   left: 25px;
 }
 
@@ -347,19 +356,13 @@ img {
 .userInfo form {
   position: absolute;
   left: 20px;
-  top: 280px;
+  top: 210px;
   padding: 0;
 }
 
 #saveChanges {
   position: absolute;
   left: 35%;
-}
-
-.form-btns {
-  text-align: center;
-  padding-top: 1.5em;
-  margin-bottom: 1.5em;
 }
 
 .form-btns .btn {
