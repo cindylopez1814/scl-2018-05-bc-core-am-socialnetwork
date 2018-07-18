@@ -340,7 +340,7 @@ img {
 #saveBtn,
 #cameraIcon button {
   background: none !important;
-  color: #2b2b2b;
+  color: #52bbe7;
   border: none;
   padding: 0 !important;
   font: inherit;
@@ -368,7 +368,7 @@ img {
 .form-btns .btn {
   border-radius: 25px;
   background-color: #82CCD5;
-  color: #333333;
+  color: #fafafa;
   border: 2px solid #82CCD5;
 }
 
@@ -399,9 +399,9 @@ img {
 .card {
   box-sizing: border-box;
   margin-top: 10%;
-  border: 1px solid #5590A6;
-  border-radius: 10px;
+  border-radius: 15px;
   background-color: rgba(255, 255, 255, 0.61);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 /*Donde esta el nombre*/
@@ -423,6 +423,7 @@ img {
 
 .card-header {
   background-color: #27aae1;
+  border-radius: 15px 15px 0 0;
 }
 
 .card-body {
@@ -433,18 +434,18 @@ img {
 
 .card-text {
   color: #2F4F4F;
-  font-weight: 700;
 }
 
-/*donde estan los iconos */
+/* donde estan los iconos */
 
 .card-footer {
   background-color: #52bbe7;
   font-size: 20px;
   text-align: center;
+  border-radius: 0 0 15px 15px;
 }
 
-/*iconos para luego q luego funcionen*/
+/* iconos */
 
 .card-footer i {
   color: white;
@@ -471,6 +472,7 @@ i:hover {
   text-align: center;
   font-size: 16px;
   margin-top: 3%;
+  border-radius: 25px;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -566,7 +568,7 @@ p {
   top: 53%;
   transform: translateX(-50%) translateY(-50%);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-  background-color: #f8f8f8;
+  background-color: #fafafaa8;
   overflow: hidden;
 }
 
