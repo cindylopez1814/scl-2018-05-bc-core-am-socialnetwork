@@ -12,7 +12,6 @@ $(document).ready(function() {
 function toWallPage() {
   navbarSupportedContent1.classList.remove('show');
   activities.classList.add('d-none');
-  calendar.classList.add('d-none');
   council.classList.add('d-none');
   chat.classList.add('d-none');
   profile.classList.add('d-none');
@@ -23,7 +22,6 @@ function toWallPage() {
 function toActivitiesPage() {
   navbarSupportedContent1.classList.remove('show');
   wall.classList.add('d-none');
-  calendar.classList.add('d-none');
   council.classList.add('d-none');
   chat.classList.add('d-none');
   profile.classList.add('d-none');
@@ -31,22 +29,10 @@ function toActivitiesPage() {
   pageTitle.innerHTML = 'ACTIVIDADES';
 }
 
-function toCalendarPage() {
-  navbarSupportedContent1.classList.remove('show');
-  wall.classList.add('d-none');
-  activities.classList.add('d-none');
-  council.classList.add('d-none');
-  chat.classList.add('d-none');
-  profile.classList.add('d-none');
-  calendar.classList.remove('d-none');
-  pageTitle.innerHTML = 'CALENDARIO';
-}
-
 function toCouncilPage() {
   navbarSupportedContent1.classList.remove('show');
   wall.classList.add('d-none');
   activities.classList.add('d-none');
-  calendar.classList.add('d-none');
   chat.classList.add('d-none');
   profile.classList.add('d-none');
   council.classList.remove('d-none');
@@ -57,7 +43,6 @@ function toChatPage() {
   navbarSupportedContent1.classList.remove('show');
   wall.classList.add('d-none');
   activities.classList.add('d-none');
-  calendar.classList.add('d-none');
   council.classList.add('d-none');
   profile.classList.add('d-none');
   chat.classList.remove('d-none');
@@ -68,7 +53,6 @@ function toProfilePage() {
   navbarSupportedContent1.classList.remove('show');
   wall.classList.add('d-none');
   activities.classList.add('d-none');
-  calendar.classList.add('d-none');
   council.classList.add('d-none');
   chat.classList.add('d-none');
   profile.classList.remove('d-none');

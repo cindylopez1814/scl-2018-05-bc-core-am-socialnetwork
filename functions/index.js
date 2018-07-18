@@ -1,4 +1,6 @@
+/*
 const functions = require('firebase-functions');
+const admin = require('firebase-admin');
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
@@ -8,7 +10,6 @@ const functions = require('firebase-functions');
 // });
 
 // Crea objetos usuario en la database
-const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 functions.auth.user().onCreate(event => {
   const user = event.data;
@@ -21,3 +22,6 @@ functions.auth.user().onCreate(event => {
   };
   admin.database().ref('users/' + user.uid).set(userObject);
 });
+
+*/
+
