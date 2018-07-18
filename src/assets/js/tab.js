@@ -26,8 +26,8 @@ firebase.database().ref('messages')
   .then((messages) => {
     console.log('Mensajes > ' + JSON.stringify(messages));
   })
-  .catch(() => {
-
+  .catch((error) => {
+    console.log('Error > ' + error);
   });
 
 // Acá comenzamos a escuchar por ${newMessage.creatorAvatar} va en img src
@@ -47,7 +47,7 @@ firebase.database().ref('messages')
           </div>
         </div>
         <div class="card-footer text-muted">
-          <i class="fab fa-earlybirds" data-id="${newMessage.key}" onclick="addStar(event)"></i><p id="birdCounter"></p><i class="fas fa-edit" data-id="${newMessage.key}" onclick="editButton(event)"></i><i id="saveBtn" class="far fa-save d-none" data-id="${newMessage.key}" onclick="updateTxt()"></i><i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButton(event)"></i>
+          <i class="fab fa-earlybirds" data-id="${newMessage.key}" onclick="addStar(event)"></i><p id="birdCounter" data-id="${newMessage.key}"></p><i class="fas fa-edit" data-id="${newMessage.key}" onclick="editButton(event)"></i><i id="saveBtn" class="far fa-save d-none" data-id="${newMessage.key}" onclick="updateTxt()"></i><i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButton(event)"></i>
         </div>
       </div>
       ` + messageContainer.innerHTML;
@@ -100,19 +100,16 @@ function updateTxt(event) {
 function addStar(event) {
   event.stopPropagation();
   const messageId = event.target.getAttribute('data-id');
-  console.log(messageId);
-  firebase.database().ref(`messages/${messageId}`).once('value')
-    .then((message)=>{
-      message.val().update({
-        starsCount: 'holi'
-      });
-      console.log('EL Gif > ' + JSON.stringify(message));
-    })
-    .catch((error)=>{
-      console.log('Database error > ' + JSON.stringify(error));
+  firebase.database().ref(`messages/${messageId}`).once('value', function(message) {
+    let result = (message.val().starsCount + 1);
+    console.log(result);
+    event.target.innerHTML = result;
+    firebase.database().ref('messages').child(messageId).update({
+      starsCount: result
     });
-}
 
+  });
+}
 
 /*
 function toggleStar(event) {
