@@ -134,10 +134,6 @@
             <i class="far fa-star"></i>ACTIVIDADES</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" onclick="toCalendarPage()">
-            <i class="far fa-calendar-alt"></i>CALENDARIO</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="#" onclick="toCouncilPage()">
             <i class="fas fa-chalkboard-teacher"></i>CONSEJO DE CURSO</a>
         </li>
@@ -162,20 +158,20 @@
   <section id="wall" class="sections md-col-9 container-fluid d-none">
     <div class="row">
       <div class="col-12">
+        <!-- Caja de comentarios -->
         <div class="card">
           <div class="card-body">
-            <div id="messageContainer"></div>
+            <textarea id="messageArea" class="form-control" type="text" placeholder="Escribe tu mensaje"></textarea>
+            <input id="sendButton" type="button" value="Publicar" onclick="sendPost()">
           </div>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-12">
-        <!-- Caja de comentarios -->
         <div class="card">
           <div class="card-body">
-            <input id="messageArea" class="form-control" type="text" placeholder="Escribe tu mensaje">
-            <input id="sendButton" type="button" value="Publicar" onclick="sendPost()">
+            <div id="messageContainer"></div>
           </div>
         </div>
       </div>
@@ -185,10 +181,6 @@
   <!-- Actividades -->
   <section id="activities" class="sections md-col-9 d-none">
     <h1>Hola aquí van las actividades xD</h1>
-  </section>
-
-  <!-- Calendario -->
-  <section id="calendar" class="sections md-col-9 d-none">
   </section>
 
   <!-- Consejo de Curso -->
@@ -223,44 +215,46 @@
 
   <!-- Perfil de usuario -->
   <section id="profile" class="container-fluid md-col-9 sections d-none">
-    <article class="small-12 medium-2 large-2">
-      <div class="circle row">
-        <img id="profilePic" class="profile-pic" src="">
-      </div>
-      <form id="cameraIcon" action="#" class="row">
-        <button id="cam">
-          <i class="fas fa-camera"></i>
-        </button>
-        <div id="photoChange" class="input-file-container d-none">
-          <input id="updatePic" accept="image/*" class="input-file" id="my-file" type="file" capture="camera">
+    <div class="profileContainer">
+      <article class="small-12 medium-2 large-2">
+        <div class="circle row">
+          <img id="profilePic" class="profile-pic" src="">
         </div>
-      </form>
-    </article>
-    <article class="userInfo small-12 medium-2 large-2 row">
-      <form>
-        <div class="form-group row">
-          <label for="userName" class="col-sm-2 col-form-label">NOMBRE</label>
-          <div class="col-sm-10">
-            <input id="userName" type="text" readonly class="form-control-plaintext">
-            <button id="diskBtn" onclick="changeName()">
-              <i class="fas fa-edit"></i>
-            </button>
-            <button id="saveBtn" class="d-none">
-              <i class="far fa-save"></i>
-            </button>
+        <form id="cameraIcon" action="#" class="row">
+          <button id="cam">
+            <i class="fas fa-camera"></i>
+          </button>
+          <div id="photoChange" class="input-file-container d-none">
+            <input id="updatePic" accept="image/*" class="input-file" id="my-file" type="file" capture="camera">
           </div>
-        </div>
-        <div class="form-group row">
-          <label for="userEmail" class="col-sm-2 col-form-label">CORREO</label>
-          <div class="col-sm-10">
-            <input id="userEmail" type="text" readonly class="form-control-plaintext">
+        </form>
+      </article>
+      <article class="userInfo small-12 medium-2 large-2 row">
+        <form>
+          <div class="form-group row">
+            <label for="userName" class="col-sm-2 col-form-label">NOMBRE</label>
+            <div class="col-sm-10">
+              <input id="userName" type="text" readonly class="form-control-plaintext">
+              <button id="diskBtn" onclick="changeName()">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button id="saveBtn" class="d-none">
+                <i class="far fa-save"></i>
+              </button>
+            </div>
           </div>
-        </div>
-        <div id="saveChanges" class="form-btns row d-none">
-          <div class="btn btn-primary" onclick="updatePhoto()">GUARDAR</div>
-        </div>
-      </form>
-    </article>
+          <div class="form-group row">
+            <label for="userEmail" class="col-sm-2 col-form-label">CORREO</label>
+            <div class="col-sm-10">
+              <input id="userEmail" type="text" readonly class="form-control-plaintext">
+            </div>
+          </div>
+          <div id="saveChanges" class="form-btns row d-none">
+            <div class="btn btn-primary" onclick="updatePhoto()">GUARDAR</div>
+          </div>
+        </form>
+      </article>
+    </div>
   </section>
 
   <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
