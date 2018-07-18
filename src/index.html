@@ -177,7 +177,27 @@
       </div>
     </div>
   </section>
-
+  <!-- Modal Confirmar Delete  -->
+  <div class="modal fade" id="modalConfirm" tabindex="-1" role="dialog" aria-labelledby="modalConfirmTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="containerModal">
+            <h6>¿Seguro de borrar este lindo post?</h6>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-register" data-dismiss="modal" onclick="deleteButton()">Aceptar</button>
+          <button class="cancel" data-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- Actividades -->
   <section id="activities" class="sections md-col-9 d-none">
     <h1>Hola aquí van las actividades xD</h1>
@@ -193,7 +213,7 @@
     <!-- Inicio Chat-->
     <div class="chat_window">
       <div class="top_menu">
-        <img class="avatar-pic" src="">
+        <img class="avatar-pic" id="avatarPic" src=""></img>
         <div class="title" id="titleChat"></div>
       </div>
       <!-- Contenedor Mensajes -->
@@ -203,7 +223,7 @@
         <div class="message_input_wrapper">
           <textarea class="message-input" id="messageInput" /> </textarea>
         </div>
-        <div class="send_message" onclick="sendMessage()">
+        <div class="send_message" onclick="sendMessage(event)">
           <div class="text">
             <i class="far fa-paper-plane"></i>
           </div>

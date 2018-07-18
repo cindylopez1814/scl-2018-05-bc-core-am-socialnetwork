@@ -576,7 +576,7 @@ p {
   -moz-border-radius: 100%;
   -ms-border-radius: 100%;
   background-color: rgb(176, 201, 204);
-  background-image: url("../img/logo.png");
+
 }
 .chat-name{
   font-weight: bold;
