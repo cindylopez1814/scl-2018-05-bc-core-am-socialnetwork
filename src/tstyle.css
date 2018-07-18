@@ -1,6 +1,6 @@
 /*Fondo Prueba*/
 body{
-  background-color: #DCDCDC;
+  background-image: url(../assets/img/school-background.png);
 }
 /*Cada cajita*/
 .card{

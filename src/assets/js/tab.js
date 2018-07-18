@@ -35,18 +35,21 @@ firebase.database().ref('messages')
   .limitToLast(5)
   .on('child_added', (newMessage) => {
     messageContainer.innerHTML = `
-      <div class="card w-75">
-        <div class="card-body">
-          <div class="col-12 avatar">
-            <img class="img-fluid img-rounded" src="${newMessage.creatorAvatar || '../img/Facebook-no-profile-picture-icon-620x389.jpg'}">
-          </div>
+      <div class="card">
+        <div class="card-header">
+          <img class="img-fluid avatar" src="${newMessage.creatorAvatar || '/assets/img/Facebook-no-profile-picture-icon-620x389.jpg'}">
           <h6 class="card-title">${newMessage.val().creatorName}</h6>
-          <div class="text">
+        </div>
+        <div class="card-body">
           <p class="card-text">${newMessage.val().text}</p>
-          </div>
         </div>
         <div class="card-footer text-muted">
-          <i class="fas fa-star" data-id="${newMessage.key}" onclick="addStar(event)"><span id="birdCounter">${newMessage.val().starsCount}</span></i><i class="fas fa-edit" data-id="${newMessage.key}" onclick="editButton(event)"></i><i id="saveBtn" class="far fa-save d-none" data-id="${newMessage.key}" onclick="updateTxt()"></i><i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButton(event)"></i>
+          <i class="fas fa-star" data-id="${newMessage.key}" onclick="addStar(event)">
+            <span id="birdCounter">${newMessage.val().starsCount}</span>
+          </i>
+          <i class="fas fa-edit" data-id="${newMessage.key}" onclick="editButton(event)"></i>
+          <i id="saveBtn" class="far fa-save d-none" data-id="${newMessage.key}" onclick="updateTxt()"></i>
+          <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButton(event)"></i>
         </div>
       </div>
       ` + messageContainer.innerHTML;
