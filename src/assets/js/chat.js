@@ -25,16 +25,17 @@ firebase.database().ref('chat')
   `;
   });
 
-function sendMessage() {
+function sendMessage(event) {
+  if(event.keyCode === 13 || !event.key){
   const currentUser = firebase.auth().currentUser;
-  const messageAreaText = messageInput.value;
+  const textMessage = messageInput.value;
   const newMessageKey = firebase.database().ref().child('chat').push().key;
-
   firebase.database().ref(`chat/${newMessageKey}`).set({
     creator: currentUser.uid,
     creatorName: currentUser.displayName,
-    text: messageAreaText,
+    text: textMessage,
     time: Date.now()
   });
   messageInput.value = '';
+  }
 };
