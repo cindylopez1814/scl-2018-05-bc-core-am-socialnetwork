@@ -10,7 +10,7 @@ body {
 
 .logo {
   padding: 10%;
-  width: 90%;
+  width: 80%;
 }
 
 .register {
@@ -387,6 +387,12 @@ img {
 
 /* Estilos de Tablero */
 
+#postMessage, .card-text {
+  width: 100%;
+  height: auto;
+  resize: vertical;
+}
+
 /*Cada cajita*/
 
 .card {
@@ -411,10 +417,8 @@ img {
   display: inline-block;
 }
 
-
 .card-body {
   background-color: white;
-  
 }
 
 /*Texto que se pone*/
