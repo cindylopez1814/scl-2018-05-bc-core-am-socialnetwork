@@ -37,12 +37,18 @@ firebase.database().ref('messages')
   .on('child_added', (newMessage) => {
     messageContainer.innerHTML = `
       <div class="card w-75">
+<<<<<<< HEAD
           <div class="card-body">
               <div class="col-1 avatar">
                 <img class="img-fluid img-rounded" src>
               </div>
               <h6 class="card-title">Nombre : ${newMessage.val().creatorName}</h6>
               <p class="card-text">${newMessage.val().text}</p>
+=======
+        <div class="card-body">
+          <div class="col-12 avatar">
+            <img class="img-fluid img-rounded" src="${newMessage.creatorAvatar || '../img/Facebook-no-profile-picture-icon-620x389.jpg'}">
+>>>>>>> upstream/master
           </div>
           <div class="card-footer text-muted">
             <i class="fab fa-earlybirds"onclick="toggleStar()"></i>
@@ -85,7 +91,6 @@ function deleteButton(event) {
 function editButton(event) {
   event.target.removeAttribute('readonly');
   saveBtn.classList.remove('d-none');
-
 }
 
 function updateTxt(event) {
@@ -103,9 +108,18 @@ function addStar(event) {
   event.stopPropagation();
   const messageId = event.target.getAttribute('data-id');
   console.log(messageId);
-  const messageRef = firebase.database().ref(`messages/${messageId}`);
-  console.log(messageRef);
+  firebase.database().ref(`messages/${messageId}`).once('value')
+    .then((message)=>{
+      message.val().update({
+        starsCount: 'holi'
+      });
+      console.log('EL Gif > ' + JSON.stringify(message));
+    })
+    .catch((error)=>{
+      console.log('Database error > ' + JSON.stringify(error));
+    });
 }
+
 
 /*
 function toggleStar(event) {

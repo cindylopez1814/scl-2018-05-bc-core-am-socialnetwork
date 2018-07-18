@@ -1,13 +1,3 @@
-/*
-// Manejo del estilo del botón que esconde/muestra la barra de navegación
-$(document).ready(function() {
-  $('.animated-icon3').click(function(event) {
-    $(this).toggleClass('open');
-  });
-});
-
-*/
-
 // Cambio de páginas
 function toWallPage() {
   navbarSupportedContent1.classList.remove('show');
@@ -65,7 +55,7 @@ cam.addEventListener('click', () => {
 });
 
 // Cambiar nombre de usuario
-function changeName() {
+diskBtn.addEventListener('click', () => {
   userName.removeAttribute('readonly');
   saveBtn.classList.remove('d-none');
-}
+});
