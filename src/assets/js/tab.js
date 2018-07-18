@@ -47,7 +47,7 @@ firebase.database().ref('messages')
           </div>
         </div>
         <div class="card-footer text-muted">
-          <i class="fab fa-earlybirds"onclick="toggleStar()"></i><i class="fas fa-comment"></i><i class="fas fa-edit"edit-id="${newMessage.key}" onclick="editButton(event)"></i><i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButton(event)"></i>
+          <i class="fab fa-earlybirds" data-id="${newMessage.key}" onclick="addStar(event)"></i><p id="birdCounter"></p><i class="fas fa-edit" data-id="${newMessage.key}" onclick="editButton(event)"></i><i id="saveBtn" class="far fa-save d-none" data-id="${newMessage.key}" onclick="updateTxt()"></i><i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButton(event)"></i>
         </div>
       </div>
       ` + messageContainer.innerHTML;
@@ -66,6 +66,7 @@ function sendPost() {
     creatorName: currentUser.displayName,
     text: messageAreaText,
     creatorAvatar: currentUser.photoURL
+    starsCount: 0
   });
   messageArea.value = '';
 }
@@ -73,28 +74,48 @@ function sendPost() {
 function deleteButton(event) {
   event.stopPropagation();
   const messagesId = event.target.getAttribute('data-id');
+  console.log(messagesId);
   const messagesRef = firebase.database().ref('messages').child(messagesId);
+  console.log(messagesId);
   messagesRef.remove();
   messageContainer.removeChild(messageContainer.childNodes[0] && messageContainer.childNodes[1]);
 }
 
 function editButton(event) {
+  event.target.removeAttribute('readonly');
+  saveBtn.classList.remove('d-none');
+
 }
 
-function toggleStar(event) {
-  messagesRef.transaction(function(messages) {
-    if (messages) {
-      if (messages.stars && messages.stars[uid]) {
-        messages.starCount--;
-        messages.stars[uid] = null;
-      } else {
-        messages.starCount++;
-        if (!messages.stars) {
-          messages.stars = {};
-        }
-        messages.stars[uid] = true;
-      }
-    }
-    return messages;
-  });
+function updateTxt(event) {
+  let messageToChange = messageTxt.value;
+  const messageId = event.target.getAttribute('data-id');
+  if (messageToChange.keyCode === 13) {
+    firebase.database().ref(`messages/${messageId}`).update({
+      text: messageToChange
+    });
+    event.target.attr('readonly', true);
+  }
 }
+
+function addStar(event) {
+  event.stopPropagation();
+  const messageId = event.target.getAttribute('data-id');
+  console.log(messageId);
+  const messageRef = firebase.database().ref(`messages/${messageId}`);
+  console.log(messageRef);
+}
+
+/*
+function toggleStar(event) {
+  event.stopPropagation();
+  const messageId = event.target.getAttribute('edit-id');
+  console.log(messageId);
+  const messageRef = firebase.database().ref('messages').child(messageId);
+  console.log(messageRef);
+  firebase.database().ref(`messages/${messageRef}`).update({
+    starsCount: newMessage.val().starsCount + 1
+  });
+};
+*/
+// newMessage.val().starsCount;
