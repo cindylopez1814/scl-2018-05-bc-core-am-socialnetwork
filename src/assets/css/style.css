@@ -10,7 +10,7 @@ body {
 
 .logo {
   padding: 10%;
-  width: 90%;
+  width: 80%;
 }
 
 .register {
@@ -387,6 +387,12 @@ img {
 
 /* Estilos de Tablero */
 
+#postMessage, .card-text {
+  width: 100%;
+  height: auto;
+  resize: vertical;
+}
+
 /*Cada cajita*/
 
 .card {
@@ -412,6 +418,7 @@ img {
   border-radius: 50%;
   display: inline-block;
   background-color: white;
+  
 }
 .card-header{
   background-color: #27aae1;
@@ -419,7 +426,6 @@ img {
 
 .card-body {
   background-color: rgba(255, 255, 255, 0.61);
-  
 }
 
 /*Texto que se pone*/
@@ -576,7 +582,7 @@ p {
   -moz-border-radius: 100%;
   -ms-border-radius: 100%;
   background-color: rgb(176, 201, 204);
-  background-image: url("../img/logo.png");
+
 }
 .chat-name{
   font-weight: bold;

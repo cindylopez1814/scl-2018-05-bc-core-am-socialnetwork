@@ -23,18 +23,31 @@ firebase.database().ref('chat')
   </div>
   <div class="message my-message">${newMessage.val().text}</div>
   `;
+  avatarPic.src=  newMessage.val().creatorAvatar
   });
 
-function sendMessage() {
+function sendMessage(event) {
+  if(event.keyCode === 13 || !event.key){
   const currentUser = firebase.auth().currentUser;
-  const messageAreaText = messageInput.value;
+  const textMessage = messageInput.value;
   const newMessageKey = firebase.database().ref().child('chat').push().key;
-
   firebase.database().ref(`chat/${newMessageKey}`).set({
     creator: currentUser.uid,
     creatorName: currentUser.displayName,
-    text: messageAreaText,
+    text: textMessage,
+    creatorAvatar:currentUser.photoURL,
     time: Date.now()
   });
   messageInput.value = '';
+  }
 };
+
+function usersApp (user) {
+  const newUser = {
+    id: user.uid,
+    name: user.displayName,
+    avatar: user.photoURL,
+  };
+  const newUserKey = use.uid;
+  firebase.database.ref(`/userss/${newUserKey}`).update(newUser);
+}
