@@ -42,10 +42,12 @@ function sendMessage(event) {
   }
 };
 
-function usersApp () {
+function usersApp (user) {
   const newUser = {
     id: user.uid,
     name: user.displayName,
     avatar: user.photoURL,
-  }
+  };
+  const newUserKey = use.uid;
+  firebase.database.ref(`/userss/${newUserKey}`).update(newUser);
 }
