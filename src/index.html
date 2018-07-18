@@ -213,7 +213,7 @@
     <!-- Inicio Chat-->
     <div class="chat_window">
       <div class="top_menu">
-        <img class="avatar-pic" src="">
+        <img class="avatar-pic" id="avatarPic" src=""></img>
         <div class="title" id="titleChat"></div>
       </div>
       <!-- Contenedor Mensajes -->
@@ -223,7 +223,7 @@
         <div class="message_input_wrapper">
           <textarea class="message-input" id="messageInput" /> </textarea>
         </div>
-        <div class="send_message" onclick="sendMessage()">
+        <div class="send_message" onclick="sendMessage(event)">
           <div class="text">
             <i class="far fa-paper-plane"></i>
           </div>
@@ -235,44 +235,46 @@
 
   <!-- Perfil de usuario -->
   <section id="profile" class="container-fluid md-col-9 sections d-none">
-    <article class="small-12 medium-2 large-2">
-      <div class="circle row">
-        <img id="profilePic" class="profile-pic" src="">
-      </div>
-      <form id="cameraIcon" action="#" class="row">
-        <button id="cam">
-          <i class="fas fa-camera"></i>
-        </button>
-        <div id="photoChange" class="input-file-container d-none">
-          <input id="updatePic" accept="image/*" class="input-file" id="my-file" type="file" capture="camera">
+    <div class="profileContainer">
+      <article class="small-12 medium-2 large-2">
+        <div class="circle row">
+          <img id="profilePic" class="profile-pic" src="">
         </div>
-      </form>
-    </article>
-    <article class="userInfo small-12 medium-2 large-2 row">
-      <form>
-        <div class="form-group row">
-          <label for="userName" class="col-sm-2 col-form-label">NOMBRE</label>
-          <div class="col-sm-10">
-            <input id="userName" type="text" readonly class="form-control-plaintext">
-            <button id="diskBtn" onclick="changeName()">
-              <i class="fas fa-edit"></i>
-            </button>
-            <button id="saveBtn" class="d-none">
-              <i class="far fa-save"></i>
-            </button>
+        <form id="cameraIcon" action="#" class="row">
+          <button id="cam">
+            <i class="fas fa-camera"></i>
+          </button>
+          <div id="photoChange" class="input-file-container d-none">
+            <input id="updatePic" accept="image/*" class="input-file" id="my-file" type="file" capture="camera">
           </div>
-        </div>
-        <div class="form-group row">
-          <label for="userEmail" class="col-sm-2 col-form-label">CORREO</label>
-          <div class="col-sm-10">
-            <input id="userEmail" type="text" readonly class="form-control-plaintext">
+        </form>
+      </article>
+      <article class="userInfo small-12 medium-2 large-2 row">
+        <form>
+          <div class="form-group row">
+            <label for="userName" class="col-sm-2 col-form-label">NOMBRE</label>
+            <div class="col-sm-10">
+              <input id="userName" type="text" readonly class="form-control-plaintext">
+              <button id="diskBtn" onclick="changeName()">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button id="saveBtn" class="d-none">
+                <i class="far fa-save"></i>
+              </button>
+            </div>
           </div>
-        </div>
-        <div id="saveChanges" class="form-btns row d-none">
-          <div class="btn btn-primary" onclick="updatePhoto()">GUARDAR</div>
-        </div>
-      </form>
-    </article>
+          <div class="form-group row">
+            <label for="userEmail" class="col-sm-2 col-form-label">CORREO</label>
+            <div class="col-sm-10">
+              <input id="userEmail" type="text" readonly class="form-control-plaintext">
+            </div>
+          </div>
+          <div id="saveChanges" class="form-btns row d-none">
+            <div class="btn btn-primary" onclick="updatePhoto()">GUARDAR</div>
+          </div>
+        </form>
+      </article>
+    </div>
   </section>
 
   <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>

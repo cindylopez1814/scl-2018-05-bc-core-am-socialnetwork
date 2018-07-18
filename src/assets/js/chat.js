@@ -23,6 +23,7 @@ firebase.database().ref('chat')
   </div>
   <div class="message my-message">${newMessage.val().text}</div>
   `;
+  avatarPic.src=  newMessage.val().creatorAvatar
   });
 
 function sendMessage(event) {
@@ -34,8 +35,17 @@ function sendMessage(event) {
     creator: currentUser.uid,
     creatorName: currentUser.displayName,
     text: textMessage,
+    creatorAvatar:currentUser.photoURL,
     time: Date.now()
   });
   messageInput.value = '';
   }
 };
+
+function usersApp () {
+  const newUser = {
+    id: user.uid,
+    name: user.displayName,
+    avatar: user.photoURL,
+  }
+}

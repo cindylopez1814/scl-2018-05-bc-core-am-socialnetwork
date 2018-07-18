@@ -29,21 +29,24 @@ firebase.database().ref('messages')
   .catch((error) => {
     console.log('Error > ' + error);
   });
-
 // Acá comenzamos a escuchar por ${newMessage.creatorAvatar} va en img src
 // on child_added
 firebase.database().ref('messages')
   .limitToLast(5)
   .on('child_added', (newMessage) => {
     messageContainer.innerHTML = `
-      <div class="card w-75">
+      <div class="card">
+        <div class="card-header">
+          <img class="img-fluid avatar" src="${newMessage.creatorAvatar || '/assets/img/Facebook-no-profile-picture-icon-620x389.jpg'}">
+          <h6 class="card-title">${newMessage.val().creatorName}</h6>
+        </div>
         <div class="card-body">
-          <div class="col-12 avatar">
-            <img class="img-fluid img-rounded" src="${newMessage.creatorAvatar || '../img/Facebook-no-profile-picture-icon-620x389.jpg'}">
-          </div>
+          <p class="card-text">${newMessage.val().text}</p>
+        </div>
         <div class="card-footer text-muted">
-          <i class="fab fa-earlybirds" data-id="${newMessage.key}" onclick="addStar(event)"></i>
-          <p id="birdCounter" data-id="${newMessage.key}"></p>
+          <i class="fas fa-star" data-id="${newMessage.key}" onclick="addStar(event)">
+            <span id="birdCounter">${newMessage.val().starsCount}</span>
+          </i>
           <i class="fas fa-edit" data-id="${newMessage.key}" onclick="editButton(event)"></i>
           <i id="saveBtn" class="far fa-save d-none" data-id="${newMessage.key}" onclick="updateTxt()"></i>
           <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButton(event)"></i>
@@ -56,10 +59,8 @@ firebase.database().ref('messages')
 function sendPost() {
   const currentUser = firebase.auth().currentUser;
   const messageAreaText = messageArea.value;
-
   // Para tener una nueva llave en la colección messages
   const newMessageKey = firebase.database().ref().child('messages').push().key;
-
   firebase.database().ref(`messages/${newMessageKey}`).set({
     creator: currentUser.uid,
     creatorName: currentUser.displayName,
@@ -98,15 +99,15 @@ function updateTxt(event) {
 
 function addStar(event) {
   event.stopPropagation();
+  event.target.style.color = '#fafafa';
   const messageId = event.target.getAttribute('data-id');
   firebase.database().ref(`messages/${messageId}`).once('value', function(message) {
-    let result = (message.val().starsCount + 1);
+    let result = (message.val().starsCount || 1);
     console.log(result);
-    event.target.innerHTML = result;
     firebase.database().ref('messages').child(messageId).update({
       starsCount: result
     });
-
+    event.target.innerHTML = result;
   });
 }
 
