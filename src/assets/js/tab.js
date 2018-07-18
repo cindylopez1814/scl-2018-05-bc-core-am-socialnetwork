@@ -39,10 +39,12 @@ firebase.database().ref('messages')
       <div class="card w-75">
         <div class="card-body">
           <div class="col-1 avatar">
-            <img class="img-fluid img-rounded" src>
+            <img class="img-fluid img-rounded" src="${newMessage.creatorAvatar || "/assets/img/facebook-no-profile-picture-icon-620x389.jpg"}">
           </div>
-          <h6 class="card-title">Nombre : ${newMessage.val().creatorName}</h6>
+          <h6 class="card-title">${newMessage.val().creatorName}</h6>
+          <div class="text">
           <p class="card-text">${newMessage.val().text}</p>
+          </div>
         </div>
         <div class="card-footer text-muted">
           <i class="fab fa-earlybirds"onclick="toggleStar()"></i><i class="fas fa-comment"></i><i class="fas fa-edit"edit-id="${newMessage.key}" onclick="editButton(event)"></i><i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButton(event)"></i>
@@ -62,7 +64,8 @@ function sendPost() {
   firebase.database().ref(`messages/${newMessageKey}`).set({
     creator: currentUser.uid,
     creatorName: currentUser.displayName,
-    text: messageAreaText
+    text: messageAreaText,
+    creatorAvatar: currentUser.photoURL
   });
   messageArea.value = '';
 }
