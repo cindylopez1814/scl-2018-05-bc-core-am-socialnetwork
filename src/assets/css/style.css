@@ -1,6 +1,8 @@
 body {
   font-family: 'Open Sans', sans-serif;
-  background-color: rgb(216, 213, 213);
+  background-image: url(../img/school-background.png);
+  background-size: contain;
+  background-position: center;
   color: #807e7e;
 }
 
