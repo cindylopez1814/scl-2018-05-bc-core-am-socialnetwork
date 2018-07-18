@@ -81,7 +81,6 @@ function deleteButton(event) {
 function editButton(event) {
   event.target.removeAttribute('readonly');
   saveBtn.classList.remove('d-none');
-
 }
 
 function updateTxt(event) {
