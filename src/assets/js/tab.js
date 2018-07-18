@@ -37,7 +37,7 @@ firebase.database().ref('messages')
     messageContainer.innerHTML = `
       <div class="card">
         <div class="card-header">
-          <img class="img-fluid avatar" src="${newMessage.creatorAvatar || '/assets/img/Facebook-no-profile-picture-icon-620x389.jpg'}">
+          <img class="img-fluid avatar" src="${newMessage.creatorAvatar || '/assets/img/penguin-glasses.png'}">
           <h6 class="card-title">${newMessage.val().creatorName}</h6>
         </div>
         <div class="card-body">
