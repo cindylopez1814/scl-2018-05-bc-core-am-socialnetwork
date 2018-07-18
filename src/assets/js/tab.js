@@ -1,19 +1,4 @@
-
-
-const createUser = (user) => {
-  const database = firebase.database();
-  const newUser = {
-    id: user.uid,
-    name: user.displayName,
-    email: user.emailVerified,
-    avatar: user.photoURL,
-  };
-  const newUserKey = user.uid;
-  database.ref(`/users/${newUserKey}`).update(newUser);
-};
-
-
-const trash = document.getElementsByClassName('fa-trash');
+// const trash = document.getElementsByClassName('fa-trash');
 
 firebase.database().ref('messages')
   .limitToLast(5) // Filtro para no obtener todos los mensajes
@@ -76,9 +61,7 @@ function sendPost() {
 function deleteButton(event) {
   event.stopPropagation();
   const messagesId = event.target.getAttribute('data-id');
-  console.log(messagesId);
   const messagesRef = firebase.database().ref('messages').child(messagesId);
-  console.log(messagesId);
   messagesRef.remove();
   messageContainer.removeChild(messageContainer.childNodes[0] && messageContainer.childNodes[1]);
 }
@@ -89,7 +72,7 @@ function editButton() {
 }
 
 function updateTxt(event) {
-  let messageToChange = 'mdf vd fm'
+  let messageToChange = 'mdf vd fm';
   const messageId = event.target.getAttribute('data-id');
   if (messageToChange.keyCode === 13) {
     firebase.database().ref(`messages/${messageId}`).update({
@@ -103,14 +86,13 @@ function addStar(event) {
   event.stopPropagation();
   event.target.style.color = '#f3f170';
   const messageId = event.target.getAttribute('data-id');
-  firebase.database().ref(`messages/${messageId}`).once('value', function(message) {
+  firebase.database().ref(`messages/${messageId}`).once('value', function(message) {   
     let result = (message.val().starsCount || 1);
     console.log(result);
     firebase.database().ref('messages').child(messageId).update({
       starsCount: result + 1
     });
     event.target.innerHTML = result;
-    event.target.disabled = true;
   });
 }
 

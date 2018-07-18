@@ -9,8 +9,7 @@ firebase.database().ref('chat')
     <div class="chat-num">${dateNow.getDate()} - ${month[dateNow.getMonth()]} ${dateNow.getHours()}:${dateNow.getMinutes()}</div>
     `;
   })
-  .catch(() => {
-  });
+  .catch(() => {});
 
 firebase.database().ref('chat')
   .limitToLast(20)
@@ -23,26 +22,26 @@ firebase.database().ref('chat')
   </div>
   <div class="message my-message">${newMessage.val().text}</div>
   `;
-  avatarPic.src=  newMessage.val().creatorAvatar
+    avatarPic.src = newMessage.val().creatorAvatar;
   });
 
 function sendMessage(event) {
-  if(event.keyCode === 13 || !event.key){
-  const currentUser = firebase.auth().currentUser;
-  const textMessage = messageInput.value;
-  const newMessageKey = firebase.database().ref().child('chat').push().key;
-  firebase.database().ref(`chat/${newMessageKey}`).set({
-    creator: currentUser.uid,
-    creatorName: currentUser.displayName,
-    text: textMessage,
-    creatorAvatar:currentUser.photoURL,
-    time: Date.now()
-  });
-  messageInput.value = '';
+  if (event.keyCode === 13 || !event.key) {
+    const currentUser = firebase.auth().currentUser;
+    const textMessage = messageInput.value;
+    const newMessageKey = firebase.database().ref().child('chat').push().key;
+    firebase.database().ref(`chat/${newMessageKey}`).set({
+      creator: currentUser.uid,
+      creatorName: currentUser.displayName,
+      text: textMessage,
+      creatorAvatar: currentUser.photoURL,
+      time: Date.now()
+    });
+    messageInput.value = '';
   }
 };
 
-function usersApp (user) {
+function usersApp(user) {
   const newUser = {
     id: user.uid,
     name: user.displayName,
