@@ -21,14 +21,14 @@ firebase.database().ref('messages')
           <h6 class="card-title">${newMessage.val().creatorName}</h6>
         </div>
         <div class="card-body">
-          <textarea class="card-text textArea" data-id="${newMessage.text}" readonly>${newMessage.val().text}</textarea>
+          <textarea class="card-text textArea" data-id="${newMessage.key}-txt" readonly>${newMessage.val().text}</textarea>
         </div>
         <div class="card-footer text-muted">
-          <i class="fas fa-star" data-id="${newMessage.key}" onclick="addStar(event)">
+          <i id="${newMessage.key}" class="fas fa-star" onclick="addStar(event)">
             <span>${newMessage.val().starsCount}</span>
           </i>
-          <i class="fas fa-edit d-none" data-id="${newMessage.key}" onclick="editButton()"></i>
-          <i id="saveBtn" class="far fa-save" data-id="${newMessage.key}" onclick="updateTxt()"></i>
+          <i class="fas fa-edit" data-id="${newMessage.key}" onclick="editButton(event)"></i>
+          <i class="far fa-save saveBtn d-none" data-id="${newMessage.key}" onclick="updateTxt()"></i>
           <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButton(event)"></i>
         </div>
       </div>
@@ -66,8 +66,12 @@ function deleteButton(event) {
   messageContainer.removeChild(messageContainer.childNodes[0] && messageContainer.childNodes[1]);
 }
 
-function editButton() {
-  document.getElementsByClassName('textArea').readOnly = false;
+function editButton(event) {
+  messageId = event.target.getAttribute('data-id');
+  console.log(messageId);
+  let message = document.getElementById(`${messageId}-txt`);
+  console.log(message);
+  message.readOnly = false;
   saveBtn.classList.remove('d-none');
 }
 
