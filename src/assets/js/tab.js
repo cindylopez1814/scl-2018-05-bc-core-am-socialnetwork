@@ -42,13 +42,16 @@ firebase.database().ref('messages')
       <div class="card w-75">
           <div class="card-body">
               <div class="col-1 avatar">
-                  <img class="img-fluid img-rounded" src>
+                <img class="img-fluid img-rounded" src>
               </div>
               <h6 class="card-title">Nombre : ${newMessage.val().creatorName}</h6>
               <p class="card-text">${newMessage.val().text}</p>
           </div>
           <div class="card-footer text-muted">
-          <i class="fab fa-earlybirds"onclick="toggleStar()"></i><i class="fas fa-comment"></i><i class="fas fa-edit"edit-id="${newMessage.key}" onclick="editButton(event)"></i><i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButton(event)"></i>
+            <i class="fab fa-earlybirds"onclick="toggleStar()"></i>
+            <i class="fas fa-comment"></i>
+            <i class="fas fa-edit"edit-id="${newMessage.key}" onclick="editButton(event)"></i>
+            <i class="fas fa-trash" data-id="${newMessage.key}"data-toggle="modal" data-target="#modalConfirm"></i>
           </div>
       </div>
       ` + messageContainer.innerHTML;
@@ -67,11 +70,8 @@ function sendPost() {
     creatorName: currentUser.displayName,
     text: messageAreaText
   });
-<<<<<<< HEAD
   messageArea.value = "";
-=======
-
-}
+};
 
 function deleteButton(event) {
   event.stopPropagation();
@@ -79,11 +79,10 @@ function deleteButton(event) {
   const messagesRef = firebase.database().ref('messages').child(messagesId);
   messagesRef.remove();
   messageContainer.removeChild(messageContainer.childNodes[0] && messageContainer.childNodes[1]);
-}
+ }
   
 function editButton(event) {
 
->>>>>>> upstream/master
 }
 
 
