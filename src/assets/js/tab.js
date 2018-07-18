@@ -1,7 +1,7 @@
 // const trash = document.getElementsByClassName('fa-trash');
 
 firebase.database().ref('messages')
-  .limitToLast(5) // Filtro para no obtener todos los mensajes
+  .limitToLast(10) // Filtro para no obtener todos los mensajes
   .once('value')
   .then((messages) => {
     console.log('Mensajes > ' + JSON.stringify(messages));
@@ -21,14 +21,14 @@ firebase.database().ref('messages')
           <h6 class="card-title">${newMessage.val().creatorName}</h6>
         </div>
         <div class="card-body">
-          <textarea class="card-text textArea" data-id="${newMessage.text}" readonly>${newMessage.val().text}</textarea>
+          <textarea class="card-text textArea" data-id="${newMessage.key}-txt" readonly>${newMessage.val().text}</textarea>
         </div>
         <div class="card-footer text-muted">
           <i class="fas fa-star" data-id="${newMessage.key}" onclick="addStar(event)">
             <span>${newMessage.val().starsCount}</span>
           </i>
-          <i class="fas fa-edit d-none" data-id="${newMessage.key}" onclick="editButton()"></i>
-          <i id="saveBtn" class="far fa-save" data-id="${newMessage.key}" onclick="updateTxt()"></i>
+          <i class="fas fa-edit" data-id="${newMessage.key}" onclick="editButton(event)"></i>
+          <i class="far fa-save saveBtn d-none" data-id="${newMessage.key}" onclick="updateTxt()"></i>
           <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButton(event)"></i>
         </div>
       </div>
@@ -46,16 +46,20 @@ firebase.database().ref('messages')
 function sendPost() {
   const currentUser = firebase.auth().currentUser;
   const messageAreaText = messageArea.value;
+  if (messageAreaText.length < 1) {
+    alert('Debes ingresar un mensaje');
+  } else {
   // Para tener una nueva llave en la colección messages
-  const newMessageKey = firebase.database().ref().child('messages').push().key;
-  firebase.database().ref(`messages/${newMessageKey}`).set({
-    creator: currentUser.uid,
-    creatorName: currentUser.displayName,
-    text: messageAreaText,
-    creatorAvatar: currentUser.photoURL,
-    starsCount: 0
-  });
-  messageArea.value = '';
+    const newMessageKey = firebase.database().ref().child('messages').push().key;
+    firebase.database().ref(`messages/${newMessageKey}`).set({
+      creator: currentUser.uid,
+      creatorName: currentUser.displayName,
+      text: messageAreaText,
+      creatorAvatar: currentUser.photoURL,
+      starsCount: 0
+    });
+    messageArea.value = '';
+  }
 }
 
 function deleteButton(event) {
@@ -66,8 +70,12 @@ function deleteButton(event) {
   messageContainer.removeChild(messageContainer.childNodes[0] && messageContainer.childNodes[1]);
 }
 
-function editButton() {
-  document.getElementsByClassName('textArea').readOnly = false;
+function editButton(event) {
+  messageId = event.target.getAttribute('data-id');
+  console.log(messageId);
+  let message = document.getElementById(`${messageId}-txt`);
+  console.log(message);
+  message.readOnly = false;
   saveBtn.classList.remove('d-none');
 }
 
