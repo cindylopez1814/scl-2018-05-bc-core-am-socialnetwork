@@ -29,7 +29,6 @@ firebase.database().ref('messages')
   .catch((error) => {
     console.log('Error > ' + error);
   });
-
 // Acá comenzamos a escuchar por ${newMessage.creatorAvatar} va en img src
 // on child_added
 firebase.database().ref('messages')
@@ -47,7 +46,7 @@ firebase.database().ref('messages')
           </div>
         </div>
         <div class="card-footer text-muted">
-          <i class="fab fa-earlybirds" data-id="${newMessage.key}" onclick="addStar(event)"></i><p id="birdCounter" data-id="${newMessage.key}"></p><i class="fas fa-edit" data-id="${newMessage.key}" onclick="editButton(event)"></i><i id="saveBtn" class="far fa-save d-none" data-id="${newMessage.key}" onclick="updateTxt()"></i><i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButton(event)"></i>
+          <i class="fas fa-star" data-id="${newMessage.key}" onclick="addStar(event)"><span id="birdCounter">${newMessage.val().starsCount}</span></i><i class="fas fa-edit" data-id="${newMessage.key}" onclick="editButton(event)"></i><i id="saveBtn" class="far fa-save d-none" data-id="${newMessage.key}" onclick="updateTxt()"></i><i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButton(event)"></i>
         </div>
       </div>
       ` + messageContainer.innerHTML;
@@ -57,10 +56,8 @@ firebase.database().ref('messages')
 function sendPost() {
   const currentUser = firebase.auth().currentUser;
   const messageAreaText = messageArea.value;
-
   // Para tener una nueva llave en la colección messages
   const newMessageKey = firebase.database().ref().child('messages').push().key;
-
   firebase.database().ref(`messages/${newMessageKey}`).set({
     creator: currentUser.uid,
     creatorName: currentUser.displayName,
@@ -99,15 +96,15 @@ function updateTxt(event) {
 
 function addStar(event) {
   event.stopPropagation();
+  event.target.style.color = '#fafafa';
   const messageId = event.target.getAttribute('data-id');
   firebase.database().ref(`messages/${messageId}`).once('value', function(message) {
-    let result = (message.val().starsCount + 1);
+    let result = (message.val().starsCount || 1);
     console.log(result);
-    event.target.innerHTML = result;
     firebase.database().ref('messages').child(messageId).update({
       starsCount: result
     });
-
+    event.target.innerHTML = result;
   });
 }
 
