@@ -6,7 +6,7 @@ firebase.database().ref('chat')
     const dateNow = new Date();
     titleChat.innerHTML += `
     <div class="chat-name">${firebase.auth().currentUser.displayName}</div>
-    <div class="chat-num">${dateNow.getDate()} - ${month[dateNow.getMonth()]} ${dateNow.getHours()}:${dateNow.getMinutes()}</div>
+    <div class="chat-num">${dateNow.getDate()} de ${month[dateNow.getMonth()]}</div>
     `;
   })
   .catch(() => {});
@@ -16,19 +16,21 @@ firebase.database().ref('chat')
   .on('child_added', (newMessage) => {
     const time = new Date(newMessage.val().time);
     messagesContainer.innerHTML += `
-  <div class="message-data">
-  <span class="message-data-name">${newMessage.val().creatorName}</span>
-  <span class="message-data-time">${time.getHours()}:${time.getMinutes()}</span>
-  </div>
-  <div class="message my-message">${newMessage.val().text}</div>
-  `;
+      <div class="message-data">
+      <span class="message-data-name">${newMessage.val().creatorName}</span>
+      <span class="message-data-time">${time.getHours()}:${time.getMinutes()}</span>
+      </div>
+      <div class="message my-message">${newMessage.val().text}</div>
+      `;
     avatarPic.src = newMessage.val().creatorAvatar;
   });
 
 function sendMessage(event) {
-  if (event.keyCode === 13 || !event.key) {
+  send.disabled = true;
     const currentUser = firebase.auth().currentUser;
     const textMessage = messageInput.value;
+    if(textMessage.length>0){
+    send.disabled = false
     const newMessageKey = firebase.database().ref().child('chat').push().key;
     firebase.database().ref(`chat/${newMessageKey}`).set({
       creator: currentUser.uid,
@@ -39,6 +41,9 @@ function sendMessage(event) {
     });
     messageInput.value = '';
   }
+    else{
+      send.disabled = true;
+    }
 };
 
 function usersApp(user) {
