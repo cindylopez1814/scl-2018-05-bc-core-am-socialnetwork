@@ -440,11 +440,12 @@ img {
 /*iconos para luego q luego funcionen*/
 
 i {
+  color: white;
   margin: 2%;
 }
 
 i:hover {
-  color: white;
+  color: #168AFF;
 }
 
 #messageContainer {
