@@ -9,12 +9,12 @@ window.onload = () => {
 // Funcion inicial
 function inicialize() {  
   firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
+    if (user) {
     // Si estamos logueados esconder "registro"
-    firstSection.style.display = 'none';
-    wall.classList.remove('d-none');
-    loggedIn.classList.remove('d-none');
-    avatarPic.src = user.photoURL;
+      firstSection.style.display = 'none';
+      wall.classList.remove('d-none');
+      loggedIn.classList.remove('d-none');
+      avatarPic.src = user.photoURL;
 
     //nueva coleccion de users conectados
     userConect = firebase.database().ref('/users-conect');
@@ -35,14 +35,14 @@ function inicialize() {
 
     });
       
-    console.log('User > ' + JSON.stringify(user));
-    showInfo(user);
-  } else {
+      console.log('User > ' + JSON.stringify(user));
+      showInfo(user);
+    } else {
     // No estamos logueados esconder 'Cerrar Sesión'
-    loggedIn.classList.add('d-none');
-    firstSection.style.display = 'block';
-  }
-});
+      loggedIn.classList.add('d-none');
+      firstSection.style.display = 'block';
+    }
+  });
 }
 
 // Función de registro
@@ -140,8 +140,8 @@ function loginGoogle() {
 
 function usersAdd(uid, name) {
   const online = userConect.push({
-    uid : uid,
-    name : name
+    uid: uid,
+    name: name
   });
   conectKey = online.key;
 }

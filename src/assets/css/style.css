@@ -13,6 +13,7 @@ body .initialPage {
   background-image: none;
   padding: 5%;
   padding-bottom: 15%;
+  height: 100vh;
 }
 
 .logo {
@@ -294,6 +295,11 @@ body .initialPage {
   font-size: 18px;
 }
 
+#titleImg {
+  height: 5vh;
+  width: auto;
+}
+
 /* Estilos generales de las secciones */
 
 #wall,
@@ -315,7 +321,7 @@ body .initialPage {
 }
 
 .profileContainer {
-  height: 88vh;
+  height: 89vh;
   width: 90vw;
   border-radius: 25px;
   background-color: #fafafaa8;
@@ -335,7 +341,7 @@ body .initialPage {
 }
 
 .circle {
-  margin: 0 auto;
+  margin-left: 25vw;
   margin-top: 20px;
   border-radius: 1000px !important;
   overflow: hidden;
@@ -754,8 +760,6 @@ p {
 
 .bottom_wrapper .send_message {
   margin-right: 2%;
-  margin-top: 6%;
-  width: 20%;
   display: inline;
   border-radius: 50px;
   background-color: rgb(255, 255, 255);
@@ -764,7 +768,6 @@ p {
   cursor: pointer;
   transition: all 0.2s linear;
   text-align: center;
-  float: right;
 }
 
 .bottom_wrapper .send_message:hover {
@@ -783,6 +786,7 @@ p {
 @media (min-width: 768px) {
   .top {
     width: 75vw;
+    height: 9vh;
     position: fixed;
     right: 0;
     top: 0;
@@ -790,6 +794,9 @@ p {
   #users-online{
     margin: 1% 0% 0% 0%;
   }  
+  #titleImg {
+    height: 7vh;
+  }
   .navbar-collapse {
     width: 25vw;
     position: fixed;
@@ -817,8 +824,15 @@ p {
     margin-left: 10px;
     padding-left: 25vw;
   }
+  .profileContainer {
+    height: 86vh;
+    width: 73vw;
+    top: 11vh;
+  }
+  .circle {
+    margin-left: 30vw;
+  }
   .userInfo form {
-    left: 27vw;
     width: 50%;
   }
   #userName,
@@ -830,7 +844,6 @@ p {
   }
   #cameraIcon {
     padding: 20px;
-    left: 290px;
   }
   .logo {
     width: 20%;
