@@ -107,3 +107,6 @@ function addStar(event) {
     event.target.style.color = '#f3f170';
   });
 }
+
+var textarea = document.getElementById('messageInput');
+textarea.scrollTop = textarea.scrollHeight;
