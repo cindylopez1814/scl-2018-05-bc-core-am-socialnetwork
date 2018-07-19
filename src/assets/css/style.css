@@ -7,27 +7,32 @@ body {
 }
 
 /* Estilo Login */
+
 body .initialPage {
   background-color: #fafafa;
   background-image: none;
   padding: 5%;
   padding-bottom: 15%;
 }
+
 .logo {
   padding: 10%;
   width: 80%;
 }
+
 .alert {
   color: red;
   text-align: center;
   margin: 0;
   display: none;
 }
-.min{
+
+.min {
   color: gray;
   font-size: 12px;
   margin-top: 0%;
 }
+
 .register {
   margin-right: 4%;
   margin-top: 0%;
@@ -49,7 +54,7 @@ body .initialPage {
 }
 
 .form-control {
-  background-color: rgb(176, 201, 204);
+  background-color: #27a9e17e;
 }
 
 #login {
@@ -433,7 +438,6 @@ img {
   border-radius: 50%;
   display: inline-block;
   background-color: white;
-  
 }
 
 .card-header {
@@ -497,24 +501,31 @@ i:hover {
 }
 
 /*Consejo de curso*/
-.finalConsejo{
+
+.finalConsejo {
   margin-bottom: 10%;
 }
 
 /*ACTIVIDADES*/
+
 /*Fotos*/
-.activityP{
+
+.activityP {
   width: 30%;
-  vertical-align: center;
-  text-align: center;
+  margin: auto;
+  padding: 10px;
+  
 }
+
 /*Fecha*/
-.dateA{
+
+.dateA {
   font-style: italic;
   letter-spacing: 1px;
   color: #5590A6;
   font-weight: 500;
 }
+
 /*PROBANDO lo de chatpost*/
 
 #comment {
@@ -812,4 +823,27 @@ p {
     margin: 1% 0% 1% 0%;
     width: 44%;
   }
+
+  /*Tablero Medias*/
+  .card{
+    margin-top: 5%;
+  }
+  /*ACTIVIDADES*/
+/*Fotos*/
+.activityP{
+  width: 10%;
+}
+/*Consejo de curso*/
+.finalConsejo{
+  margin-bottom: 5%;
+}
+
+}
+@media (min-width: 1024px){
+  .photoConsejo{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+  }
+
 }

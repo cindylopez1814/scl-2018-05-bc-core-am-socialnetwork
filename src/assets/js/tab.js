@@ -1,7 +1,7 @@
 // const trash = document.getElementsByClassName('fa-trash');
 
 firebase.database().ref('messages')
-  .limitToLast(15) // Filtro para no obtener todos los mensajes
+  .limitToLast(5) // Filtro para no obtener todos los mensajes
   .once('value')
   .then((messages) => {
     console.log('Mensajes > ' + JSON.stringify(messages));
@@ -12,7 +12,7 @@ firebase.database().ref('messages')
 // Acá comenzamos a escuchar por ${newMessage.creatorAvatar} va en img src
 // on child_added
 firebase.database().ref('messages')
-  .limitToLast(5)
+  .limitToLast(10)
   .on('child_added', (newMessage) => {
     messageContainer.innerHTML = `
       <div class="card">
@@ -21,7 +21,7 @@ firebase.database().ref('messages')
           <h6 class="card-title">${newMessage.val().creatorName}</h6>
         </div>
         <div class="card-body">
-          <textarea class="card-text textArea" data-id="${newMessage.key}-txt" readonly>${newMessage.val().text}</textarea>
+          <textarea id="${newMessage.key}-txt" class="card-text" data-id="${newMessage.key}-txt" readonly autofocus>${newMessage.val().text}</textarea>
         </div>
         <div class="card-footer text-muted">
           <i class="fas fa-star" data-id="${newMessage.key}" onclick="addStar(event)">
@@ -33,13 +33,15 @@ firebase.database().ref('messages')
         </div>
       </div>
       ` + messageContainer.innerHTML;
-  /*  if (newMessage.creator === firebase.auth().currentUser.uid) {
+    /*
+    if (newMessage.creator === firebase.auth().currentUser.uid) {
       document.getElementsByClassName('fa-edit').style.display = 'inline';
-      trash.style.display = 'inline';
+      document.getElementsByClassName('fa-trash').style.display = 'inline';
     } else {
       document.getElementsByClassName('fa-edit').style.display = 'none';
-      trash.style.display = 'none';
-    } */
+      document.getElementsByClassName('fa-trash').style.display = 'none';
+    }¨
+    */
   });
 
 // Usaremos una colección para guardar los mensajes, llamada messages
@@ -72,22 +74,18 @@ function deleteButton(event) {
 
 function editButton(event) {
   messageId = event.target.getAttribute('data-id');
-  console.log(messageId);
   let message = document.getElementById(`${messageId}-txt`);
-  console.log(message);
   message.readOnly = false;
-  saveBtn.classList.remove('d-none');
-}
-
-function updateTxt(event) {
-  let messageToChange = 'mdf vd fm';
-  const messageId = event.target.getAttribute('data-id');
-  if (messageToChange.keyCode === 13) {
-    firebase.database().ref(`messages/${messageId}`).update({
-      text: messageToChange
-    });
-    event.target.attr('readonly', true);
-  }
+  message.onkeypress = function(event) {
+    let value = message.value;
+    if (event.keyCode === 13) {
+      firebase.database().ref(`messages/${messageId}`).update({
+        text: value
+      });
+      message.readOnly = true;
+      console.log('Cambios guardados');
+    }
+  };
 }
 
 function addStar(event) {
@@ -96,24 +94,9 @@ function addStar(event) {
   const messageId = event.target.getAttribute('data-id');
   firebase.database().ref(`messages/${messageId}`).once('value', function(message) {   
     let result = (message.val().starsCount || 1);
-    console.log(result);
     firebase.database().ref('messages').child(messageId).update({
       starsCount: result + 1
     });
     event.target.innerHTML = result;
   });
 }
-
-/*
-function toggleStar(event) {
-  event.stopPropagation();
-  const messageId = event.target.getAttribute('edit-id');
-  console.log(messageId);
-  const messageRef = firebase.database().ref('messages').child(messageId);
-  console.log(messageRef);
-  firebase.database().ref(`messages/${messageRef}`).update({
-    starsCount: newMessage.val().starsCount + 1
-  });
-};
-*/
-// newMessage.val().starsCount;
