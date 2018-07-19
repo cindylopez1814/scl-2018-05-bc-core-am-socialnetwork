@@ -1,3 +1,7 @@
+window.onbeforeunload = function() {
+  window.scrollTo(0, 0);
+};
+
 // Cambio de páginas
 function toWallPage() {
   navbarSupportedContent1.classList.remove('show');
@@ -6,6 +10,7 @@ function toWallPage() {
   chat.classList.add('d-none');
   profile.classList.add('d-none');
   wall.classList.remove('d-none');
+  wall.focus();
   pageTitle.innerHTML = 'DIARIO MURAL';
 }
 
