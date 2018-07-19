@@ -1,11 +1,7 @@
 // const trash = document.getElementsByClassName('fa-trash');
 
 firebase.database().ref('messages')
-<<<<<<< HEAD
   .limitToLast(5) // Filtro para no obtener todos los mensajes
-=======
-  .limitToLast(15) // Filtro para no obtener todos los mensajes
->>>>>>> refs/remotes/origin/master
   .once('value')
   .then((messages) => {
     console.log('Mensajes > ' + JSON.stringify(messages));
@@ -37,13 +33,13 @@ firebase.database().ref('messages')
         </div>
       </div>
       ` + messageContainer.innerHTML;
-  /*  if (newMessage.creator === firebase.auth().currentUser.uid) {
+    if (newMessage.creator === firebase.auth().currentUser.uid) {
       document.getElementsByClassName('fa-edit').style.display = 'inline';
-      trash.style.display = 'inline';
+      document.getElementsByClassName('fa-trash').style.display = 'inline';
     } else {
       document.getElementsByClassName('fa-edit').style.display = 'none';
-      trash.style.display = 'none';
-    } */
+      document.getElementsByClassName('fa-trash').style.display = 'none';
+    }
   });
 
 // Usaremos una colección para guardar los mensajes, llamada messages
@@ -76,11 +72,8 @@ function deleteButton(event) {
 
 function editButton(event) {
   messageId = event.target.getAttribute('data-id');
-  console.log(messageId);
   let message = document.getElementById(`${messageId}-txt`);
-  console.log(message);
   message.readOnly = false;
-  console.log(message.value);
   message.onkeypress = function(event) {
     let value = message.value;
     if (event.keyCode === 13) {
@@ -88,6 +81,8 @@ function editButton(event) {
         text: value
       });
       message.readOnly = true;
+      console.log('Cambios guardados');
+      
     }
   };
 }
