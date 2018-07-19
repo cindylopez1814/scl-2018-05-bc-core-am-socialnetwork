@@ -1,77 +1,42 @@
-# Red Social
+# Red Social: Conectapp Alumnos
 
-## Preámbulo
+Esta red social fue creada especialmente para  alumnos y profesores, en donde éstos puedan encontrarse y reunirse, fortaleciendo sus lazos de comunidad dentro del curso. 
 
-Un emprendedor muy visionario nos ha encargado crear una red social. No nos da
-mucho detalle sobre qué tipo de red social quiere, él solo nos dice que creemos
-la que mejor podamos y que luego lo convenzamos de que nuestra red social será
-la más exitosa. El emprendedor nos da ciertos tópicos en los que le gustaría
-invertir. Estos son:
 
-* Alimentación
-* Feminismo
-* Educación
-* Salud
-* Energías Renovables
+## Definición del producto.
 
-## Introducción
+Primero, como grupo, se escogió un tema de la lista de selección para  dividirnos en tríos y hacer un Benchmark  de las posibles apps de competencia Analizamos distintas redes sociales y/o aplicaciones en las que alumnos se puedan comunicar ya se con sus pares o profesores. Gracias a este Benchmark,  se pudo observar sus necesidades.
 
-Instagram, Snapchat, Twitter, Facebook, Twitch, Linkedin, las redes sociales han
-invadido nuestra vida. Las amamos, odiamos, idolatramos y muchos no podemos
-vivir sin ellas.
+Los elementos básicos de esta red social son:
 
-Un ejemplo, en una ronda de financiamiento se presentó un caso de una red social
-para químicos. En esta red social los químicos postean artículos sobre sus
-investigaciones y pueden encontrar el contenido de acuerdo a lo más popular, lo
-reciente o lo más comentado. Además, pueden comentar en los artículos de sus
-colegas y pueden filtrar artículos de acuerdo a determinadas etiquetas.
+* Login con Firebase, con las opciones de ingresar con nuevo mail, por medio de Facebook o  Gmail. (En caso de errores,  la app muestra mensaje de error para ayudar al usuario a superar estos errores).
+* Un “Tablero”, donde se puede postear tareas o avisos. (Con las funciones: Like, Editar o Eliminar).
+* Registro de “Actividades”. 
+* Registro de “Consejo de Curso”. 
+* Chat privado, para usuarios. 
+* Poder cambiar de nombre y foto de perfil. 
+* Cerrar sesión.
 
-## Objetivos
+## Diseño de interfaz de usuario
 
-El objetivo principal de aprendizaje de este proyecto es construir una
-_interfaz_ web responsive donde podamos leer y escribir data, además de agregar
-más de una sola vista de interacción.
+* Para diseñar el prototipo del producto en baja fidelidad se utilizo el programa “Illustrator”.
 
-* Esperamos que en este proyecto puedas pensar en el usuario, entendiendo cuál
-  es la red social que cambiará y alegrará sus vidas.
-* Nos interesa que logres entender a las necesidades de los usuarios para los
-  que crearás el producto y los ayudes a resolver esas necesidades.
-* Para esto, deberás poner en juego tu creatividad, podrás generar nuevas ideas
-  que lleven a una solución original y valiosa del problema.
-* Además, cuentas con el apoyo de tus compañeras, debes trabajar junto a ellas,
-  buscando feedback constante para realizar el proyecto.
+* Para diseñar el prototipo del producto en alta fidelidad se utilizo el programa “Atomic”.
 
-Tópicos: _mobile-first_, [_responsive_](https://github.com/Laboratoria/curricula-js/tree/master/topics/css/02-responsive),
-_multiple-views_, _crud_, _storage_, ...
+
 
 ### Mobile first
 
-El concepto de [_mobile first_](https://www.mediaclick.es/blog/diseno-web-responsive-design-y-la-importancia-del-mobile-first/)
-hace referencia a un proceso de diseño y desarrollo donde partimos de cómo se ve
-y cómo funciona la aplicación en un dispositivo móvil primero, y más adelante se
-ve como adaptar la aplicación a pantallas progresivamente grandes y
-características específicas del entorno desktop. Esto es en contraposición al
-modelo tradicional, donde primero se diseñaban los websites (o webapps) para
-desktop y después se trataba de _arrugar_ el diseño para que entre en pantallas
-más chicas. La clave acá es asegurarse de que desde el principio diseñan usando
-la vista _responsive_ de las herramientas de desarrollador (developer tools) del
-navegador. De esa forma, partimos de cómo se ve y comporta la aplicación en una
-pantalla y entorno móvil.
+Esta diseñado en Mobile First (proceso de diseño y desarrollo donde partimos de cómo se ve y cómo funciona la aplicación en un dispositivo móvil primero), y responsive para diferente tipo de pantallas. 
 
-### Múltiples vistas
-
-En proyectos anteriores nuestras aplicaciones habían estado compuestas de una
-sola _vista_ principal (una sóla _página_). En este proyecto se introduce la
-necesidad de tener que dividir nuestra interfaz en varias _vistas_ o _páginas_
-y ofrecer una manera de navegar entre estas vistas. Este problema se puede
-afrontar de muchas maneras: con archivos HTML independientes (cada uno con su
-URL) y links tradicionales, manteniendo estado en memoria y rederizando
-condicionalmente (sin refrescar la página), [manipulando el historial del
-navegador](https://developer.mozilla.org/es/docs/DOM/Manipulando_el_historial_del_navegador)
-con [`window.history`](https://developer.mozilla.org/es/docs/Web/API/Window/history),
-usando una librería (por ejemplo [`react-router`](https://github.com/ReactTraining/react-router)
-o [`vue-router`](https://router.vuejs.org/)). En este proyecto te invitamos a
-explorar opciones y decidir una opción de implementación.
+### UX
+Dentro de la carpeta UX, se encuentran:
+- Encuestas a Posibles Usuarios.
+- Entrevistas a Usuarios (Documentos).
+- Entrevistas a Usuarios (Grabaciones).
+- Perfil de Usuario.
+- Sketch Baja Fidelidad.
+- Sketch Alta Fidelidad. 
 
 ### Escritura de datos
 
