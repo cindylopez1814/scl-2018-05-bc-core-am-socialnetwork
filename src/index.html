@@ -338,9 +338,14 @@
   <section id="chat" class="sections md-col-9 d-none">
     <!-- Inicio Chat-->
     <div class="chat_window">
-      <div class="top_menu">
-        <img class="avatar-pic" id="avatarPic"></img>
-        <div class="title" id="titleChat"></div>
+      <div class="top_menu row">
+        <div class="col-lg-11 col-md-10 col-sm-12">
+          <img class="avatar-pic" id="avatarPic"></img>
+          <div class="title" id="titleChat"></div>
+        </div>
+        <div id="users-online" class="col-1"  data-toggle="modal" data-target="#modalOnline">
+          <i class="fas fa-users"></i>
+        </div>
       </div>
       <!-- Contenedor Mensajes -->
       <div class="messagesContainer" id="messagesContainer"></div>
@@ -358,6 +363,27 @@
     </div>
     <!-- Fin Chat -->
   </section>
+  <!-- Modal -->
+  <div class="modal fade" id="modalOnline" tabindex="-1" role="dialog" aria-labelledby="modalCont" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modalConect" id="modalCont">Usuarios Conectados <span id="contUsers"></span></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="containerModal">
+            <ul id="contentUserOnline"></ul>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-register" id="btnRegister" onclick="register()" data-dismiss="modal">VOLVER</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Perfil de usuario -->
   <section id="profile" class="container-fluid md-col-9 sections d-none">

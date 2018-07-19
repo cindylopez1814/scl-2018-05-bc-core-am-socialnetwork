@@ -23,14 +23,14 @@ function inicialize() {
     userConect.on('child_removed', (dataUser) => {
       // alert(`${dataUser.val().name} ha salido de la sala`)
       contUser--;
-      console.log(contUser)
-      userDisconect(dataUser.val().uid)
+      contUsers.innerHTML = (contUser);
+      userDisconect(dataUser.val().uid);
     });
     // Escucha usuarios al conectar
     userConect.on('child_added', (dataUser) => {
       // alert(`${dataUser.val().name} ha ingresado a la sala`)
       contUser = contUser + 1; 
-      console.log(contUser);
+      contUsers.innerHTML = (contUser);      
       usersConect(dataUser.val().name, dataUser.val().uid);
 
     });
@@ -153,12 +153,10 @@ function usersRemove() {
 function usersConect(name, uid) {
   const li = `
     <li id="${uid}" class= "listUsers">
-      <span class="listUser">
-        <i>person</i>
       ${name}</span>
     </li>
   `
-  console.log(li);
+  contentUserOnline.innerHTML += li;
 }
 
 function usersDisconect(uid) {

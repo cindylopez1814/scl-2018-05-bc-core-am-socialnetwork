@@ -649,6 +649,26 @@ p {
   font-size: 20px;
 }
 
+#users-online{
+  margin: 0% 0% 0% 75%;
+  color: #82ccd5;
+  font-size: 20px;
+}
+#contentUserOnline{
+  width: 100%;
+  text-align: center;
+  padding: 0%;
+}
+.modalConect{
+  text-align: center;
+}
+.listUsers{
+  color: #333333;
+  list-style: none;
+  font-size: 20px;
+  padding: 2%;
+  border: 2px #82ccd5 solid;
+}
 .messagesContainer {
   list-style: none;
   padding: 20px 10px 0 10px;
@@ -767,6 +787,9 @@ p {
     right: 0;
     top: 0;
   }
+  #users-online{
+    margin: 1% 0% 0% 0%;
+  }  
   .navbar-collapse {
     width: 25vw;
     position: fixed;
