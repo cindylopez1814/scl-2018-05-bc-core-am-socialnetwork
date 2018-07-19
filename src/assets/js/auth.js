@@ -1,4 +1,5 @@
 let userConect = null;
+let conectKey = "";
 
 window.onload = () => {
   inicialize();
@@ -18,8 +19,11 @@ function inicialize() {
     userConect = firebase.database().ref('/users-conect');
     usersAdd(user.uid, user.displayName);
     
+    userConect.on('child_removed', (dataUser) => {
+      alert(`${dataUser.val().name} ha salido de la sala`)
+    })
     userConect.on('child_added', (dataUser) => {
-      alert(`${dataUser.val().name} Esta conectado`)
+      alert(`${dataUser.val().name} ha ingresado a la sala`)
     });
       
     console.log('User > ' + JSON.stringify(user));
@@ -82,6 +86,7 @@ function logout() {
       location.reload();
     })
     .catch();
+  return usersRemove();
 };
 
 // Funcion ingresar con Facebook
@@ -129,4 +134,9 @@ function usersAdd(uid, name) {
     uid : uid,
     name : name
   });
+  conectKey = online.key;
+}
+
+function usersRemove() {
+  firebase.database().ref(`/users-conect/${conectKey}`).remove();
 }
