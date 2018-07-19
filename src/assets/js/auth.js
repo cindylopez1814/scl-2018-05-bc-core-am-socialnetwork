@@ -1,8 +1,9 @@
 let userConect = null;
 let conectKey = "";
-
+let contUser = 0;
 window.onload = () => {
   inicialize();
+  
 };
 
 // Funcion inicial
@@ -20,11 +21,18 @@ function inicialize() {
     usersAdd(user.uid, user.displayName);
     //Escucha usuarios al desconectar
     userConect.on('child_removed', (dataUser) => {
-      alert(`${dataUser.val().name} ha salido de la sala`)
+      // alert(`${dataUser.val().name} ha salido de la sala`)
+      contUser--;
+      console.log(contUser)
+      userDisconect(dataUser.val().uid)
     });
     // Escucha usuarios al conectar
     userConect.on('child_added', (dataUser) => {
-      alert(`${dataUser.val().name} ha ingresado a la sala`)
+      // alert(`${dataUser.val().name} ha ingresado a la sala`)
+      contUser = contUser + 1; 
+      console.log(contUser);
+      usersConect(dataUser.val().name, dataUser.val().uid);
+
     });
       
     console.log('User > ' + JSON.stringify(user));
@@ -140,4 +148,19 @@ function usersAdd(uid, name) {
 
 function usersRemove() {
   firebase.database().ref(`/users-conect/${conectKey}`).remove();
+}
+
+function usersConect(name, uid) {
+  const li = `
+    <li id="${uid}" class= "listUsers">
+      <span class="listUser">
+        <i>person</i>
+      ${name}</span>
+    </li>
+  `
+  console.log(li);
+}
+
+function usersDisconect(uid) {
+  $('#' + uid).remove();
 }
