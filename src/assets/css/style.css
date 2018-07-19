@@ -797,4 +797,14 @@ p {
     margin: 1% 0% 1% 0%;
     width: 44%;
   }
+
+  /*Tablero Medias*/
+  .card{
+    margin-top: 5%;
+  }
+  /*ACTIVIDADES*/
+/*Fotos*/
+.activityP{
+  width: 15%;
+}
 }
