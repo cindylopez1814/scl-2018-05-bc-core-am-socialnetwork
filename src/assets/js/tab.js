@@ -33,15 +33,13 @@ firebase.database().ref('messages')
         </div>
       </div>
       ` + messageContainer.innerHTML;
-    /*
     if (newMessage.creator === firebase.auth().currentUser.uid) {
       document.getElementsByClassName('fa-edit').style.display = 'inline';
       document.getElementsByClassName('fa-trash').style.display = 'inline';
     } else {
       document.getElementsByClassName('fa-edit').style.display = 'none';
       document.getElementsByClassName('fa-trash').style.display = 'none';
-    }¨
-    */
+    }
   });
 
 // Usaremos una colección para guardar los mensajes, llamada messages
