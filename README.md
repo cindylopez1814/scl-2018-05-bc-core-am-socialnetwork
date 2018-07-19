@@ -22,10 +22,10 @@ Los elementos básicos de esta red social son:
 * Usuarios: 
   * Profesores y Alumnos de un mismo colegio. 
 
-* Para diseñar el prototipo del producto en baja fidelidad se utilizo el programa “Illustrator”.
-![Getting Started](./src/ux)
+* Para diseñar el prototipo del producto en baja fidelidad se utilizo el programa “Illustrator”. (Documento PDF en Carpeta UX, en Sketch Baja Fidelidad)
 
 * Para diseñar el prototipo del producto en alta fidelidad se utilizo el programa “Atomic”.
+![](https://imageshack.com/a/img921/1992/Dgh2Za.png)
 
 
 
