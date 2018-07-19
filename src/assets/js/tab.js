@@ -32,7 +32,7 @@ firebase.database().ref('messages')
         </div>
       </div>
       ` + messageContainer.innerHTML;
-    if (newMessage.creator === firebase.auth().currentUser.uid) {
+    if (newMessage.val().creator === firebase.auth().currentUser.uid) {
       console.log('holi');   
       document.getElementById(`${newMessage.key}-edit`).style.display = 'inline';
       document.getElementById(`${newMessage.key}-trash`).style.display = 'inline';
@@ -89,7 +89,6 @@ function editButton(event) {
 
 function addStar(event) {
   event.stopPropagation();
-  event.target.style.color = '#f3f170';
   const messageId = event.target.getAttribute('data-id');
   firebase.database().ref(`messages/${messageId}`).once('value', function(message) {   
     let result = (message.val().starsCount || 1);
@@ -97,5 +96,6 @@ function addStar(event) {
       starsCount: result + 1
     });
     event.target.innerHTML = result;
+    event.target.style.color = '#f3f170';
   });
 }
