@@ -14,10 +14,14 @@ function inicialize() {
     loggedIn.classList.remove('d-none');
     avatarPic.src = user.photoURL;
 
-    //
+    //nueva coleccion de users conectados
     userConect = firebase.database().ref('/users-conect');
     usersAdd(user.uid, user.displayName);
-
+    
+    userConect.on('child_added', (dataUser) => {
+      alert(`${dataUser.val().name} Esta conectado`)
+    });
+      
     console.log('User > ' + JSON.stringify(user));
     showInfo(user);
   } else {
