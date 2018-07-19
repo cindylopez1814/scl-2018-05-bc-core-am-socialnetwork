@@ -28,9 +28,9 @@ function updatePhoto() {
 // Mostrar información del usuario
 function showInfo(user) {
   if (user.displayName !== null) {
-    userName.value = user.displayName;
+    userName.value = user.displayName || 'Agrega un nombre';
     userEmail.value = user.email;
-    profilePic.src = user.photoURL;
+    profilePic.src = user.photoURL || '/src/assets/img/penguin-glasses.png';
   } else {
     userEmail.value = 'Indefinido';
     userEmail.value = user.email;

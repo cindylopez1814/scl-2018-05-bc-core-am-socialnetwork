@@ -120,7 +120,9 @@
         </div>
       </button>
       <!-- Título de la barra -->
-      <span id="pageTitle" class="navbar-brand align-middle">CONECTAPP ALUMNOS</span>
+      <span id="pageTitle" class="navbar-brand align-middle">
+        <img id="titleImg" src="assets/img/conectapp.png" alt="logo sin fondo">
+      </span>
     </div>
     <!-- Contenido -->
     <div class="collapse navbar-collapse md-col-3" id="navbarSupportedContent1">
@@ -128,7 +130,7 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <a class="nav-link" href="#" onclick="toWallPage()">
-            <i class="fas fa-users"></i>TABLERO</a>
+            <i class="fas fa-users"></i>DIARIO MURAL</a>
         </li>
         <li class="nav-item">
           <!-- con class active el elemento oscurece su color (agregar como evento con js) -->
@@ -160,7 +162,7 @@
   <section id="wall" class="sections md-col-9 container-fluid d-none">
     <div class="row">
       <div class="col-12">
-        <!-- Caja de comentarios -->
+        <!-- Publicar mensajes -->
         <div class="card">
           <div class="card-body">
             <textarea id="messageArea" class="form-control" type="text" placeholder="Escribe tu mensaje"></textarea>
@@ -384,7 +386,7 @@
   <section id="profile" class="container-fluid md-col-9 sections d-none">
     <div class="profileContainer">
       <article class="small-12 medium-2 large-2">
-        <div class="circle row">
+        <div class="circle">
           <img id="profilePic" class="profile-pic" src="">
         </div>
         <form id="cameraIcon" action="#" class="row">

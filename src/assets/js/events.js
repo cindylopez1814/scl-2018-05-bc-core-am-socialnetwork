@@ -6,7 +6,7 @@ function toWallPage() {
   chat.classList.add('d-none');
   profile.classList.add('d-none');
   wall.classList.remove('d-none');
-  pageTitle.innerHTML = 'TABLERO';
+  pageTitle.innerHTML = 'DIARIO MURAL';
 }
 
 function toActivitiesPage() {
@@ -61,3 +61,7 @@ diskBtn.addEventListener('click', () => {
   saveBtn.classList.remove('d-none');
 });
 
+// Agregar fotos a la publicación
+function addPhotos() {
+  photos.classList.remove('d-none');
+};

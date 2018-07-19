@@ -17,7 +17,7 @@ firebase.database().ref('messages')
     messageContainer.innerHTML = `
       <div class="card">
         <div class="card-header">
-          <img class="img-fluid avatar" src="${newMessage.creatorAvatar || '/src/assets/img/penguin-glasses.png'}">
+          <img class="img-fluid avatar" src="${newMessage.val().creatorAvatar || '/src/assets/img/penguin-glasses.png'}">
           <h6 class="card-title">${newMessage.val().creatorName}</h6>
         </div>
         <div class="card-body">
@@ -33,11 +33,9 @@ firebase.database().ref('messages')
       </div>
       ` + messageContainer.innerHTML;
     if (newMessage.val().creator === firebase.auth().currentUser.uid) {
-      console.log('holi');   
       document.getElementById(`${newMessage.key}-edit`).style.display = 'inline';
       document.getElementById(`${newMessage.key}-trash`).style.display = 'inline';
     } else {
-      console.log('chao con voh');
       document.getElementById(`${newMessage.key}-edit`).style.display = 'none';
       document.getElementById(`${newMessage.key}-trash`).style.display = 'none';
     }

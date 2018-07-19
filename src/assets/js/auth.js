@@ -1,5 +1,5 @@
 let userConect = null;
-let conectKey = "";
+let conectKey = '';
 
 window.onload = () => {
   inicialize();
@@ -8,32 +8,32 @@ window.onload = () => {
 // Funcion inicial
 function inicialize() {  
   firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
+    if (user) {
     // Si estamos logueados esconder "registro"
-    firstSection.style.display = 'none';
-    wall.classList.remove('d-none');
-    loggedIn.classList.remove('d-none');
-    avatarPic.src = user.photoURL;
+      firstSection.style.display = 'none';
+      wall.classList.remove('d-none');
+      loggedIn.classList.remove('d-none');
+      avatarPic.src = user.photoURL;
 
-    //nueva coleccion de users conectados
-    userConect = firebase.database().ref('/users-conect');
-    usersAdd(user.uid, user.displayName);
+      // nueva coleccion de users conectados
+      userConect = firebase.database().ref('/users-conect');
+      usersAdd(user.uid, user.displayName);
     
-    userConect.on('child_removed', (dataUser) => {
-      alert(`${dataUser.val().name} ha salido de la sala`)
-    })
-    userConect.on('child_added', (dataUser) => {
-      alert(`${dataUser.val().name} ha ingresado a la sala`)
-    });
+      userConect.on('child_removed', (dataUser) => {
+      //  alert(`${dataUser.val().name} ha salido de la sala`);
+      });
+      userConect.on('child_added', (dataUser) => {
+      //  alert(`${dataUser.val().name} ha ingresado a la sala`);
+      });
       
-    console.log('User > ' + JSON.stringify(user));
-    showInfo(user);
-  } else {
+      console.log('User > ' + JSON.stringify(user));
+      showInfo(user);
+    } else {
     // No estamos logueados esconder 'Cerrar Sesión'
-    loggedIn.classList.add('d-none');
-    firstSection.style.display = 'block';
-  }
-});
+      loggedIn.classList.add('d-none');
+      firstSection.style.display = 'block';
+    }
+  });
 }
 
 // Función de registro
@@ -131,8 +131,8 @@ function loginGoogle() {
 
 function usersAdd(uid, name) {
   const online = userConect.push({
-    uid : uid,
-    name : name
+    uid: uid,
+    name: name
   });
   conectKey = online.key;
 }
