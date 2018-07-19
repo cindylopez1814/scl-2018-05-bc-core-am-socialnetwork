@@ -82,7 +82,6 @@ function editButton(event) {
       });
       message.readOnly = true;
       console.log('Cambios guardados');
-      
     }
   };
 }
@@ -93,7 +92,6 @@ function addStar(event) {
   const messageId = event.target.getAttribute('data-id');
   firebase.database().ref(`messages/${messageId}`).once('value', function(message) {   
     let result = (message.val().starsCount || 1);
-    console.log(result);
     firebase.database().ref('messages').child(messageId).update({
       starsCount: result + 1
     });
