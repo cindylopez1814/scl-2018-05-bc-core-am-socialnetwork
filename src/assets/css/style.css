@@ -441,7 +441,11 @@ img {
 }
 
 .card-header {
-  background-color: #27aae1;
+  background-color: #27a9e1ad;
+  border-radius: 15px 15px 0 0;
+}
+
+.card-header:first-child {
   border-radius: 15px 15px 0 0;
 }
 
@@ -458,9 +462,13 @@ img {
 /* donde estan los iconos */
 
 .card-footer {
-  background-color: #52bbe7;
+  background-color: #27a9e1ad;
   font-size: 20px;
   text-align: center;
+  border-radius: 0 0 15px 15px;
+}
+
+.card-footer:last-child {
   border-radius: 0 0 15px 15px;
 }
 
@@ -501,8 +509,11 @@ i:hover {
 }
 
 /*Consejo de curso*/
+#council .card {
+  margin: 20px;
+}
 
-.finalConsejo {
+#finalConsejo {
   margin-bottom: 10%;
 }
 
@@ -514,7 +525,6 @@ i:hover {
   width: 30%;
   margin: auto;
   padding: 10px;
-  
 }
 
 /*Fecha*/

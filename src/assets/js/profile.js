@@ -40,7 +40,7 @@ function showInfo(user) {
 
 // Cambiar nombre de usuario
 saveBtn.addEventListener('click', () => {
-  firebase.database().ref(`users/${firebase.auth().currentUser.uid}`).update({
+  firebase.database().ref(`users-conect/${firebase.auth().currentUser.uid}`).update({
     name: userName.value
   });
   firebase.auth().currentUser.updateProfile({

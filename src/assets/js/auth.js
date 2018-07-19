@@ -42,7 +42,7 @@ function register() {
   const emailValue = loginUser.value;
   const passwordValue = loginPass.value;
   firebase.auth().createUserWithEmailAndPassword(emailValue, passwordValue)
-    .then(function () {
+    .then(function() {
       loginUser.value = '';
       loginPass.value = '';
     })
