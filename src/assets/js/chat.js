@@ -9,7 +9,7 @@ firebase.database().ref('chat')
     <div class="chat-num">${dateNow.getDate()} de ${month[dateNow.getMonth()]}</div>
     `;
   })
-  .catch(() => {});
+  .catch(() => { });
 
 firebase.database().ref('chat')
   .limitToLast(20)
@@ -27,9 +27,9 @@ firebase.database().ref('chat')
 
 function sendMessage(event) {
   send.disabled = true;
-    const currentUser = firebase.auth().currentUser;
-    const textMessage = messageInput.value;
-    if(textMessage.length>0){
+  const currentUser = firebase.auth().currentUser;
+  const textMessage = messageInput.value;
+  if (textMessage.length > 0) {
     send.disabled = false
     const newMessageKey = firebase.database().ref().child('chat').push().key;
     firebase.database().ref(`chat/${newMessageKey}`).set({
@@ -41,9 +41,9 @@ function sendMessage(event) {
     });
     messageInput.value = '';
   }
-    else{
-      send.disabled = true;
-    }
+  else {
+    send.disabled = true;
+  }
 };
 
 function usersApp(user) {

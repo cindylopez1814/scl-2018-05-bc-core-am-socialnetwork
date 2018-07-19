@@ -10,7 +10,8 @@ body {
 body .initialPage {
   background-color: #fafafa;
   background-image: none;
-
+  padding: 5%;
+  padding-bottom: 15%;
 }
 .logo {
   padding: 10%;
