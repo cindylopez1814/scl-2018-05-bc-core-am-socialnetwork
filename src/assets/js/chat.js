@@ -46,6 +46,32 @@ function sendMessage(event) {
   }
 };
 
+function presenceUsers() {
+  const uid = firebase.auth().currentUser.uid;
+  // Referencia a un usuario especifico
+  // Guardar usuario online/offline online/offline.
+  const userStatusDatabaseRef = firebase.database().ref('/status/' + uid);
+  //offline
+  const isOfflineForDatabase = {
+    state: 'offline',
+    last_changed: firebase.database.ServerValue.TIMESTAMP,
+  };
+  const isOnlineForDatabase = {
+    state: 'online',
+    last_changed: firebase.database.ServerValue.TIMESTAMP,
+  };
+  //Retornara true para online y false para offline
+  firebase.database().ref('.info/connected').on('value', function(snapshot) {
+    if (snapshot.val() == false) {
+        return;
+    };
+    userStatusDatabaseRef.onDisconnect().set(isOfflineForDatabase)
+    .then(() => {
+        userStatusDatabaseRef.set(isOnlineForDatabase);
+    });
+});
+}
+
 function usersApp(user) {
   const newUser = {
     id: user.uid,
