@@ -490,8 +490,9 @@ i:hover {
 /*Fotos*/
 .activityP{
   width: 30%;
-  vertical-align: center;
-  text-align: center;
+  margin: auto;
+  padding: 10px;
+  
 }
 /*Fecha*/
 .dateA{
