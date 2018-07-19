@@ -62,12 +62,20 @@ function sendPost() {
 }
 
 function deleteButton(event) {
-  event.stopPropagation();
+
+  if(confirm("¿Estás seguro de eliminar este mensaje?")) {
+    event.stopPropagation();
   const messagesId = event.target.getAttribute('data-id');
   const messagesRef = firebase.database().ref('messages').child(messagesId);
   messagesRef.remove();
   messageContainer.removeChild(messageContainer.childNodes[0] && messageContainer.childNodes[1]);
+
+} else {
+  
 }
+}
+
+
 
 function editButton(event) {
   messageId = event.target.getAttribute('data-id');
@@ -97,3 +105,6 @@ function addStar(event) {
     event.target.style.color = '#f3f170';
   });
 }
+
+var textarea = document.getElementById('messageInput');
+textarea.scrollTop = textarea.scrollHeight;
