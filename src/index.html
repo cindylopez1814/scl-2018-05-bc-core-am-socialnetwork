@@ -30,6 +30,7 @@
     <!--Inicio sesión manual-->
     <div class="row">
       <div class="col-md-6 offset-md-3 register" id="loggedOut">
+        <p class="alert" id="loginAlert">Debes rellenar todos los campos</p>
         <div class="input-group inputRegister">
           <input type="email" class="form-control" placeholder="Email" id="email">
           <div class="input-group-append icon-input">
@@ -65,25 +66,24 @@
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="modalRegisterTitle">Bienvenido</h5>
+                <h5 class="modal-title" id="modalRegisterTitle">Bienvenido, Registrate en la mejor app</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
+
               </div>
               <div class="modal-body">
+                <p class="alert" id="alertLogin">Debes rellenar todos los campos</p>
                 <div class="containerModal">
-                  <!-- 
-                  <label for="login-user" class="form-label">Usuario</label>
-                  <input id="nickname" class="form-control" type="text" placeholder="Nombre Usuario" />
-                   -->
                   <label for="login-mail" class="form-label">Correo Electronico</label>
                   <input id="loginUser" class="form-control" type="email" placeholder="Email" />
                   <label for="login-pass" class="form-label">Contraseña</label>
                   <input id="loginPass" class="form-control" type="password" placeholder="Contraseña" />
+                  <p class="min">minimo 6 caracteres</p>
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-register" onclick="register()" data-dismiss="modal">REGISTRARME</button>
+                <button type="button" class="btn btn-register" id="btnRegister" onclick="register()" data-dismiss="modal">REGISTRARME</button>
               </div>
             </div>
           </div>
@@ -351,7 +351,7 @@
     <!-- Inicio Chat-->
     <div class="chat_window">
       <div class="top_menu">
-        <img class="avatar-pic" id="avatarPic" src=""></img>
+        <img class="avatar-pic" id="avatarPic"></img>
         <div class="title" id="titleChat"></div>
       </div>
       <!-- Contenedor Mensajes -->
@@ -361,7 +361,7 @@
         <div class="message_input_wrapper">
           <textarea class="message-input" id="messageInput" /> </textarea>
         </div>
-        <div class="send_message" onclick="sendMessage(event)">
+        <div class="send_message" onclick="sendMessage(event)" id="send">
           <div class="text">
             <i class="far fa-paper-plane"></i>
           </div>
