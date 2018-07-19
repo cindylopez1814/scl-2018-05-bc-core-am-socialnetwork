@@ -1,7 +1,7 @@
 // const trash = document.getElementsByClassName('fa-trash');
 
 firebase.database().ref('messages')
-  .limitToLast(10) // Filtro para no obtener todos los mensajes
+  .limitToLast(5) // Filtro para no obtener todos los mensajes
   .once('value')
   .then((messages) => {
     console.log('Mensajes > ' + JSON.stringify(messages));
@@ -12,7 +12,7 @@ firebase.database().ref('messages')
 // Acá comenzamos a escuchar por ${newMessage.creatorAvatar} va en img src
 // on child_added
 firebase.database().ref('messages')
-  .limitToLast(5)
+  .limitToLast(10)
   .on('child_added', (newMessage) => {
     messageContainer.innerHTML = `
       <div class="card">
@@ -21,7 +21,7 @@ firebase.database().ref('messages')
           <h6 class="card-title">${newMessage.val().creatorName}</h6>
         </div>
         <div class="card-body">
-          <textarea class="card-text textArea" data-id="${newMessage.key}-txt" readonly>${newMessage.val().text}</textarea>
+          <textarea id="${newMessage.key}-txt" class="card-text" data-id="${newMessage.key}-txt" readonly>${newMessage.val().text}</textarea>
         </div>
         <div class="card-footer text-muted">
           <i class="fas fa-star" data-id="${newMessage.key}" onclick="addStar(event)">
@@ -76,19 +76,31 @@ function editButton(event) {
   let message = document.getElementById(`${messageId}-txt`);
   console.log(message);
   message.readOnly = false;
-  saveBtn.classList.remove('d-none');
+  console.log(message.value);
+  message.onkeypress = function(event) {
+    let value = message.value;
+    if (event.keyCode === 13) {
+      firebase.database().ref(`messages/${messageId}`).update({
+        text: value
+      });
+      message.readOnly = true;
+    }
+  };
 }
 
-function updateTxt(event) {
-  let messageToChange = 'mdf vd fm';
+
+/*
+function updateTxt() {
   const messageId = event.target.getAttribute('data-id');
-  if (messageToChange.keyCode === 13) {
-    firebase.database().ref(`messages/${messageId}`).update({
-      text: messageToChange
-    });
-    event.target.attr('readonly', true);
+  console.log(messageId);
+  let message = document.getElementById(`${messageId}`);
+  console.log(message);
+  let messageToChange = message.value;
+  console.log(messageToChange);
+  if (messageToChange.which === 13 || messageToChange.keyCode === 13) {
+
   }
-}
+}*/
 
 function addStar(event) {
   event.stopPropagation();
@@ -103,17 +115,3 @@ function addStar(event) {
     event.target.innerHTML = result;
   });
 }
-
-/*
-function toggleStar(event) {
-  event.stopPropagation();
-  const messageId = event.target.getAttribute('edit-id');
-  console.log(messageId);
-  const messageRef = firebase.database().ref('messages').child(messageId);
-  console.log(messageRef);
-  firebase.database().ref(`messages/${messageRef}`).update({
-    starsCount: newMessage.val().starsCount + 1
-  });
-};
-*/
-// newMessage.val().starsCount;
