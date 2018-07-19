@@ -5,6 +5,7 @@ window.onload = () => {
       firstSection.style.display = 'none';
       wall.classList.remove('d-none');
       loggedIn.classList.remove('d-none');
+      avatarPic.src = user.photoURL;
       console.log('User > ' + JSON.stringify(user));
       showInfo(user);
     } else {
@@ -20,7 +21,7 @@ function register() {
   const emailValue = loginUser.value;
   const passwordValue = loginPass.value;
   firebase.auth().createUserWithEmailAndPassword(emailValue, passwordValue)
-    .then(function() {
+    .then(function () {
       loginUser.value = '';
       loginPass.value = '';
     })
