@@ -3,7 +3,6 @@ let conectKey = "";
 let contUser = 0;
 window.onload = () => {
   inicialize();
-  
 };
 
 // Funcion inicial
@@ -21,21 +20,16 @@ function inicialize() {
     usersAdd(user.uid, user.displayName);
     //Escucha usuarios al desconectar
     userConect.on('child_removed', (dataUser) => {
-      // alert(`${dataUser.val().name} ha salido de la sala`)
       contUser--;
       contUsers.innerHTML = (contUser);
       userDisconect(dataUser.val().uid);
     });
     // Escucha usuarios al conectar
     userConect.on('child_added', (dataUser) => {
-      // alert(`${dataUser.val().name} ha ingresado a la sala`)
       contUser = contUser + 1; 
       contUsers.innerHTML = (contUser);      
       usersConect(dataUser.val().name, dataUser.val().uid);
-
-    });
-      
-      console.log('User > ' + JSON.stringify(user));
+    });      
       showInfo(user);
     } else {
     // No estamos logueados esconder 'Cerrar Sesión'
@@ -88,7 +82,6 @@ function login() {
 function logout() {
   firebase.auth().signOut()
     .then(() => {
-      console.log('chao');
       profile.classList.add('d-none');
       wall.classList.add('d-none');
       loggedIn.classList.add('d-none');
