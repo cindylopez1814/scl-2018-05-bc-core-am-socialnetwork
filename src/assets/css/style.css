@@ -512,8 +512,9 @@ i:hover {
 
 .activityP {
   width: 30%;
-  vertical-align: center;
-  text-align: center;
+  margin: auto;
+  padding: 10px;
+  
 }
 
 /*Fecha*/
@@ -822,4 +823,27 @@ p {
     margin: 1% 0% 1% 0%;
     width: 44%;
   }
+
+  /*Tablero Medias*/
+  .card{
+    margin-top: 5%;
+  }
+  /*ACTIVIDADES*/
+/*Fotos*/
+.activityP{
+  width: 10%;
+}
+/*Consejo de curso*/
+.finalConsejo{
+  margin-bottom: 5%;
+}
+
+}
+@media (min-width: 1024px){
+  .photoConsejo{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+  }
+
 }
