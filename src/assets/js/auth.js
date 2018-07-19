@@ -18,10 +18,11 @@ function inicialize() {
     //nueva coleccion de users conectados
     userConect = firebase.database().ref('/users-conect');
     usersAdd(user.uid, user.displayName);
-    
+    //Escucha usuarios al desconectar
     userConect.on('child_removed', (dataUser) => {
       alert(`${dataUser.val().name} ha salido de la sala`)
-    })
+    });
+    // Escucha usuarios al conectar
     userConect.on('child_added', (dataUser) => {
       alert(`${dataUser.val().name} ha ingresado a la sala`)
     });
