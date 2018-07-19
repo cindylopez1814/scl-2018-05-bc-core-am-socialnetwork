@@ -21,7 +21,7 @@ firebase.database().ref('messages')
           <h6 class="card-title">${newMessage.val().creatorName}</h6>
         </div>
         <div class="card-body">
-          <textarea id="${newMessage.key}-txt" class="card-text" data-id="${newMessage.key}-txt" readonly>${newMessage.val().text}</textarea>
+          <textarea id="${newMessage.key}-txt" class="card-text" data-id="${newMessage.key}-txt" readonly autofocus>${newMessage.val().text}</textarea>
         </div>
         <div class="card-footer text-muted">
           <i class="fas fa-star" data-id="${newMessage.key}" onclick="addStar(event)">
@@ -87,20 +87,6 @@ function editButton(event) {
     }
   };
 }
-
-
-/*
-function updateTxt() {
-  const messageId = event.target.getAttribute('data-id');
-  console.log(messageId);
-  let message = document.getElementById(`${messageId}`);
-  console.log(message);
-  let messageToChange = message.value;
-  console.log(messageToChange);
-  if (messageToChange.which === 13 || messageToChange.keyCode === 13) {
-
-  }
-}*/
 
 function addStar(event) {
   event.stopPropagation();
