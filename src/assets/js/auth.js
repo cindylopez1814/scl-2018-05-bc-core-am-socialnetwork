@@ -1,20 +1,32 @@
+let userConect = null;
+
 window.onload = () => {
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      // Si estamos logueados esconder "registro"
-      firstSection.style.display = 'none';
-      wall.classList.remove('d-none');
-      loggedIn.classList.remove('d-none');
-      avatarPic.src = user.photoURL;
-      console.log('User > ' + JSON.stringify(user));
-      showInfo(user);
-    } else {
-      // No estamos logueados esconder 'Cerrar Sesión'
-      loggedIn.classList.add('d-none');
-      firstSection.style.display = 'block';
-    }
-  });
+  inicialize();
 };
+
+// Funcion inicial
+function inicialize() {  
+  firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    // Si estamos logueados esconder "registro"
+    firstSection.style.display = 'none';
+    wall.classList.remove('d-none');
+    loggedIn.classList.remove('d-none');
+    avatarPic.src = user.photoURL;
+
+    //
+    userConect = firebase.database().ref('/users-conect');
+    usersAdd(user.uid, user.displayName);
+
+    console.log('User > ' + JSON.stringify(user));
+    showInfo(user);
+  } else {
+    // No estamos logueados esconder 'Cerrar Sesión'
+    loggedIn.classList.add('d-none');
+    firstSection.style.display = 'block';
+  }
+});
+}
 
 // Función de registro
 function register() {
@@ -106,4 +118,11 @@ function loginGoogle() {
       const credential = error.credential;
       console.log('Error ' + credential);
     });
+}
+
+function usersAdd(uid, name) {
+  const online = userConect.push({
+    uid : uid,
+    name : name
+  });
 }
