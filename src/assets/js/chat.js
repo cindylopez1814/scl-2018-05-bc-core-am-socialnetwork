@@ -22,7 +22,6 @@ firebase.database().ref('chat')
       </div>
       <div class="message my-message">${newMessage.val().text}</div>
       `;
-    avatarPic.src = newMessage.val().creatorAvatar;
   });
 
 function sendMessage(event) {
@@ -30,17 +29,17 @@ function sendMessage(event) {
   const currentUser = firebase.auth().currentUser;
   const textMessage = messageInput.value;
   if (textMessage.length > 0) {
-    send.disabled = false;
+    send.disabled = false
     const newMessageKey = firebase.database().ref().child('chat').push().key;
     firebase.database().ref(`chat/${newMessageKey}`).set({
       creator: currentUser.uid,
       creatorName: currentUser.displayName,
       text: textMessage,
-      creatorAvatar: currentUser.photoURL,
       time: Date.now()
     });
     messageInput.value = '';
-  } else {
+  }
+  else {
     send.disabled = true;
   }
 };
