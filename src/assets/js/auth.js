@@ -1,20 +1,40 @@
+let userConect = null;
+let conectKey = "";
+
 window.onload = () => {
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      // Si estamos logueados esconder "registro"
-      firstSection.style.display = 'none';
-      wall.classList.remove('d-none');
-      loggedIn.classList.remove('d-none');
-      avatarPic.src = user.photoURL;
-      console.log('User > ' + JSON.stringify(user));
-      showInfo(user);
-    } else {
-      // No estamos logueados esconder 'Cerrar Sesión'
-      loggedIn.classList.add('d-none');
-      firstSection.style.display = 'block';
-    }
-  });
+  inicialize();
 };
+
+// Funcion inicial
+function inicialize() {  
+  firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    // Si estamos logueados esconder "registro"
+    firstSection.style.display = 'none';
+    wall.classList.remove('d-none');
+    loggedIn.classList.remove('d-none');
+    avatarPic.src = user.photoURL;
+
+    //nueva coleccion de users conectados
+    userConect = firebase.database().ref('/users-conect');
+    usersAdd(user.uid, user.displayName);
+    
+    userConect.on('child_removed', (dataUser) => {
+      alert(`${dataUser.val().name} ha salido de la sala`)
+    })
+    userConect.on('child_added', (dataUser) => {
+      alert(`${dataUser.val().name} ha ingresado a la sala`)
+    });
+      
+    console.log('User > ' + JSON.stringify(user));
+    showInfo(user);
+  } else {
+    // No estamos logueados esconder 'Cerrar Sesión'
+    loggedIn.classList.add('d-none');
+    firstSection.style.display = 'block';
+  }
+});
+}
 
 // Función de registro
 function register() {
@@ -66,6 +86,7 @@ function logout() {
       location.reload();
     })
     .catch();
+  return usersRemove();
 };
 
 // Funcion ingresar con Facebook
@@ -106,4 +127,16 @@ function loginGoogle() {
       const credential = error.credential;
       console.log('Error ' + credential);
     });
+}
+
+function usersAdd(uid, name) {
+  const online = userConect.push({
+    uid : uid,
+    name : name
+  });
+  conectKey = online.key;
+}
+
+function usersRemove() {
+  firebase.database().ref(`/users-conect/${conectKey}`).remove();
 }
