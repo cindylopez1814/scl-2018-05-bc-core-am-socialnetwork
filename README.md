@@ -20,7 +20,7 @@ Los elementos básicos de esta red social son:
 ## Diseño de interfaz de usuario
 
 * Usuarios: 
-** Profesores y Alumnos de un mismo colegio. 
+  * Profesores y Alumnos de un mismo colegio. 
 
 * Para diseñar el prototipo del producto en baja fidelidad se utilizo el programa “Illustrator”.
 ![Getting Started](./src/ux)
