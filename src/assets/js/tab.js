@@ -17,7 +17,7 @@ firebase.database().ref('messages')
     messageContainer.innerHTML = `
       <div class="card">
         <div class="card-header">
-          <img class="img-fluid avatar" src="${newMessage.creatorAvatar || '/src/assets/img/penguin-glasses.png'}">
+          <img class="img-fluid avatar" src="${newMessage.val().creatorAvatar || '/src/assets/img/penguin-glasses.png'}">
           <h6 class="card-title">${newMessage.val().creatorName}</h6>
         </div>
         <div class="card-body">
@@ -64,12 +64,20 @@ function sendPost() {
 }
 
 function deleteButton(event) {
-  event.stopPropagation();
+
+  if(confirm("¿Estás seguro de eliminar este mensaje?")) {
+    event.stopPropagation();
   const messagesId = event.target.getAttribute('data-id');
   const messagesRef = firebase.database().ref('messages').child(messagesId);
   messagesRef.remove();
   messageContainer.removeChild(messageContainer.childNodes[0] && messageContainer.childNodes[1]);
+
+} else {
+  
 }
+}
+
+
 
 function editButton(event) {
   messageId = event.target.getAttribute('data-id');
@@ -99,3 +107,6 @@ function addStar(event) {
     event.target.style.color = '#f3f170';
   });
 }
+
+var textarea = document.getElementById('messageInput');
+textarea.scrollTop = textarea.scrollHeight;
