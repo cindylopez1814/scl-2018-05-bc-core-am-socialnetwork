@@ -26,6 +26,14 @@ Los elementos básicos de esta red social son:
 
 * Para diseñar el prototipo del producto en alta fidelidad se utilizo el programa “Atomic”.
 ![](https://imageshack.com/a/img921/1992/Dgh2Za.png)
+![](https://imageshack.com/a/img924/6161/u5G0qj.png)
+![](https://imageshack.com/a/img923/9071/1wghsf.png)
+![](https://imageshack.com/a/img924/5968/Nl7qMj.png)
+![](https://imageshack.com/a/img922/953/3o6NaS.png)
+![](https://imageshack.com/a/img923/5476/2NGpM1.png)
+![](https://imageshack.com/a/img924/2339/IIJckD.png)
+![](https://imageshack.com/a/img924/3661/qv7Ao9.png)
+![](https://imageshack.com/a/img924/7641/Lw8mgg.png)
 
 
 
