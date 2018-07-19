@@ -805,6 +805,19 @@ p {
   /*ACTIVIDADES*/
 /*Fotos*/
 .activityP{
-  width: 15%;
+  width: 10%;
 }
+/*Consejo de curso*/
+.finalConsejo{
+  margin-bottom: 5%;
+}
+
+}
+@media (min-width: 1024px){
+  .photoConsejo{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+  }
+
 }
