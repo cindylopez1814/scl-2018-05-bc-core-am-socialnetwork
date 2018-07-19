@@ -8,9 +8,29 @@ body {
 
 /* Estilo Login */
 
+body .initialPage {
+  background-color: #fafafa;
+  background-image: none;
+  padding: 5%;
+  padding-bottom: 15%;
+}
+
 .logo {
   padding: 10%;
   width: 80%;
+}
+
+.alert {
+  color: red;
+  text-align: center;
+  margin: 0;
+  display: none;
+}
+
+.min {
+  color: gray;
+  font-size: 12px;
+  margin-top: 0%;
 }
 
 .register {
@@ -418,7 +438,6 @@ img {
   border-radius: 50%;
   display: inline-block;
   background-color: white;
-  
 }
 
 .card-header {
@@ -482,24 +501,30 @@ i:hover {
 }
 
 /*Consejo de curso*/
-.finalConsejo{
+
+.finalConsejo {
   margin-bottom: 10%;
 }
 
 /*ACTIVIDADES*/
+
 /*Fotos*/
-.activityP{
+
+.activityP {
   width: 30%;
   vertical-align: center;
   text-align: center;
 }
+
 /*Fecha*/
-.dateA{
+
+.dateA {
   font-style: italic;
   letter-spacing: 1px;
   color: #5590A6;
   font-weight: 500;
 }
+
 /*PROBANDO lo de chatpost*/
 
 #comment {

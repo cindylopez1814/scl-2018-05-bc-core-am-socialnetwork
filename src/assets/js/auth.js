@@ -19,15 +19,18 @@ window.onload = () => {
 function register() {
   const emailValue = loginUser.value;
   const passwordValue = loginPass.value;
-  firebase.auth().createUserWithEmailAndPassword(emailValue, passwordValue)
+    firebase.auth().createUserWithEmailAndPassword(emailValue, passwordValue)
     .then(function() {
-      console.log('Usuario registrado');
       loginUser.value = '';
       loginPass.value = '';
     })
     .catch((error) => {
       console.log('Error de firebase > ' + error.code);
       console.log('Error de firebase, mensaje > ' + error.message);
+      alert('email invalido o contraseña invalida');
+      if (emailValue.length < 1 || passwordValue.length < 1) {
+        alertLogin.style.display = 'block'
+      }
     });
 }
 
@@ -35,14 +38,18 @@ function register() {
 function login() {
   const emailValue = email.value;
   const passwordValue = password.value;
+  loginAlert.style.display = 'none'
   firebase.auth().signInWithEmailAndPassword(emailValue, passwordValue)
     .then(() => {
       loggedIn.classList.remove('d-none');
       console.log('Usuario con login exitoso');
     })
     .catch((error) => {
+      if(emailValue.length < 1 || passwordValue.length < 1) {
+        loginAlert.style.display = 'block'};
       console.log('Error de firebase > ' + error.code);
       console.log('Error de firebase, mensaje > ' + error.message);
+      alert('Email o contraseña incorrecta');
     });
 }
 

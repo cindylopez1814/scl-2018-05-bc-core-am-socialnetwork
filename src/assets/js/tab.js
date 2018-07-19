@@ -1,7 +1,11 @@
 // const trash = document.getElementsByClassName('fa-trash');
 
 firebase.database().ref('messages')
+<<<<<<< HEAD
   .limitToLast(5) // Filtro para no obtener todos los mensajes
+=======
+  .limitToLast(15) // Filtro para no obtener todos los mensajes
+>>>>>>> refs/remotes/origin/master
   .once('value')
   .then((messages) => {
     console.log('Mensajes > ' + JSON.stringify(messages));
