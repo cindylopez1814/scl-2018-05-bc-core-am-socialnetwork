@@ -27,18 +27,19 @@ firebase.database().ref('messages')
           <i class="fas fa-star" data-id="${newMessage.key}" onclick="addStar(event)">
             <span>${newMessage.val().starsCount}</span>
           </i>
-          <i class="fas fa-edit" data-id="${newMessage.key}" onclick="editButton(event)"></i>
-          <i class="far fa-save saveBtn d-none" data-id="${newMessage.key}" onclick="updateTxt()"></i>
-          <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButton(event)"></i>
+          <i id="${newMessage.key}-edit" class="fas fa-edit" data-id="${newMessage.key}" onclick="editButton(event)"></i>
+          <i id="${newMessage.key}-trash" class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButton(event)"></i>
         </div>
       </div>
       ` + messageContainer.innerHTML;
-    if (newMessage.creator === firebase.auth().currentUser.uid) {
-      document.getElementsByClassName('fa-edit').style.display = 'inline';
-      document.getElementsByClassName('fa-trash').style.display = 'inline';
+    if (newMessage.val().creator === firebase.auth().currentUser.uid) {
+      console.log('holi');   
+      document.getElementById(`${newMessage.key}-edit`).style.display = 'inline';
+      document.getElementById(`${newMessage.key}-trash`).style.display = 'inline';
     } else {
-      document.getElementsByClassName('fa-edit').style.display = 'none';
-      document.getElementsByClassName('fa-trash').style.display = 'none';
+      console.log('chao con voh');
+      document.getElementById(`${newMessage.key}-edit`).style.display = 'none';
+      document.getElementById(`${newMessage.key}-trash`).style.display = 'none';
     }
   });
 
@@ -82,13 +83,12 @@ function editButton(event) {
       });
       message.readOnly = true;
       console.log('Cambios guardados');
-    }
+    };
   };
 }
 
 function addStar(event) {
   event.stopPropagation();
-  event.target.style.color = '#f3f170';
   const messageId = event.target.getAttribute('data-id');
   firebase.database().ref(`messages/${messageId}`).once('value', function(message) {   
     let result = (message.val().starsCount || 1);
@@ -96,5 +96,6 @@ function addStar(event) {
       starsCount: result + 1
     });
     event.target.innerHTML = result;
+    event.target.style.color = '#f3f170';
   });
 }
