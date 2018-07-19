@@ -663,11 +663,11 @@ p {
   text-align: center;
 }
 .listUsers{
+  display: block;
   color: #333333;
   list-style: none;
   font-size: 20px;
   padding: 2%;
-  border: 2px #82ccd5 solid;
 }
 .messagesContainer {
   list-style: none;
